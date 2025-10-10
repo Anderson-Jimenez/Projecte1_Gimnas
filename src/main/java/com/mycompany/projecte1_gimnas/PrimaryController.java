@@ -36,12 +36,14 @@ public class PrimaryController {
                     usernameLabel.setText(queryOutput.getString("name"));
                 }
 
-                conn.close(); // ¡Siempre cierra la conexión!
+                conn.close();
             } else {
                 System.out.println("❌ No se pudo establecer la conexión con la base de datos.");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        App.setRoot("main_panell");
+
     }
 }

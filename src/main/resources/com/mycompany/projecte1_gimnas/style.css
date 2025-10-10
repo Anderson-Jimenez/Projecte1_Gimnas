@@ -1,0 +1,6 @@
+#mainPane {
+    -fx-background-image: url("/com/mycompany/projecte1_gimnas/img/bg_principal.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;        /* ocupa toda la pantalla */
+    -fx-background-position: center;   /* centrada */
+}
