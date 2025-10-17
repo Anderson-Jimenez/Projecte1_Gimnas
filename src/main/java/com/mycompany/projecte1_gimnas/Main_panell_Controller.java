@@ -30,8 +30,8 @@ public class Main_panell_Controller {
     private Button showStatsBtn;
 
     @FXML
-    void assignInstructors(ActionEvent event) {
-
+    void assignInstructors(ActionEvent event) throws IOException {
+        App.setRoot("editTimetable");
     }
 
     @FXML
