@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 com/mycompany/projecte1_gimnas/LoginController.class
 com/mycompany/projecte1_gimnas/DatabaseConnection.class
 ProbaController.class
 com/mycompany/projecte1_gimnas/App.class
+=======
+com/mycompany/projecte1_gimnas/Edit_timetable_Controller.class
+com/mycompany/projecte1_gimnas/DatabaseConnection.class
+com/mycompany/projecte1_gimnas/PrimaryController.class
+com/mycompany/projecte1_gimnas/SecondaryController.class
+com/mycompany/projecte1_gimnas/App.class
+com/mycompany/projecte1_gimnas/Main_panell_Controller.class
+>>>>>>> artur

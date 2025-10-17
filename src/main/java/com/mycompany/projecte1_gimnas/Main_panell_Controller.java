@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,8 +40,8 @@ public class Main_panell_Controller {
     }
 
     @FXML
-    void editTimetable(ActionEvent event) {
-
+    void editTimetable(ActionEvent event) throws IOException {
+        App.setRoot("editTimetable");
     }
 
     @FXML
