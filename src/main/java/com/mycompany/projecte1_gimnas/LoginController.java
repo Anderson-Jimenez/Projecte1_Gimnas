@@ -12,8 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController {
@@ -53,7 +51,7 @@ public class LoginController {
 
             if (loginCorrecte) {
                 System.out.println("✅ Benvingut al gym!");
-                App.setRoot("proba");
+                App.setRoot("main_panell");
             } else {
                 System.out.println("❌ Usuari o contrasenya incorrectes.");
             }
