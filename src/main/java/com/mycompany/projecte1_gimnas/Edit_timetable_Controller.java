@@ -1,21 +1,41 @@
 package com.mycompany.projecte1_gimnas;
 
 import java.io.IOException;
+import java.sql.Connection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 public class Edit_timetable_Controller {
-
+    Connection conn = DatabaseConnection.getConnection();
+    
+    
+    @FXML
+    private TableView<Clase> class_table;
+    
     @FXML
     private Button assignInstructorsBtn;
+
+    @FXML
+    private TableColumn<Clase, ?> capacity;
+
+    @FXML
+    private TableColumn<Clase, ?> class_name;
 
     @FXML
     private Button closeSessionBtn;
 
     @FXML
+    private TableColumn<Clase, ?> edit;
+
+    @FXML
     private Button editTimeBtn;
+
+    @FXML
+    private TableColumn<Clase, ?> instructor;
 
     @FXML
     private AnchorPane mainBackground;
@@ -28,6 +48,9 @@ public class Edit_timetable_Controller {
 
     @FXML
     private Button showStatsBtn;
+
+    @FXML
+    private TableColumn<Clase, ?> time;
 
     @FXML
     void assignInstructors(ActionEvent event) {
