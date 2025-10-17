@@ -4,3 +4,26 @@
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }
+.btn{
+    -fx-background-color: #FE5D5D;
+    -fx-transition:1s;
+    -fx-background-radius: 8;
+    -fx-pref-height: 40px;
+}
+.btn:hover{
+    -fx-background-color: #FC3F3F;
+}
+.btn:pressed {
+    -fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+}
+
+.input{
+    -fx-pref-height: 40px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+}
+.labelColor{
+    -fx-text-fill: #FE5D5D;
+    -fx-font-size:18px;
+}
