@@ -30,76 +30,65 @@
 .spinning {
     -fx-background-image: url("img/Spinning.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box;
 }
 .ioga {
     -fx-background-image: url("img/yoga.png");
     -fx-background-size: cover;
     -fx-background-position: center;
-    -fx-background-radius: 8;
-
+    -fx-background-clip: padding-box, border-box;
 }
 .bodypump {
     -fx-background-image: url("img/body_pump.png");
     -fx-background-size: cover;
     -fx-background-position: center;
-    -fx-background-radius: 8;
-
+    -fx-background-clip: padding-box, border-box;
 }
 .crossfit {
     -fx-background-image: url("img/crossfit.png");
     -fx-background-size: cover;
     -fx-background-position: center;
-    -fx-background-radius: 8;
-
+    -fx-background-clip: padding-box, border-box;
 }
 .zumba {
     -fx-background-image: url("img/zumba.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
-
-}.pilates {
+    -fx-background-clip: padding-box, border-box;
+}
+.pilates {
     -fx-background-image: url("img/pilates.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;
+
 }
 .boxing {
     -fx-background-image: url("img/boxing.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;
 }
 .hitt {
     -fx-background-image: url("img/hitt.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;
 }
 .step {
     -fx-background-image: url("img/step.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;
 }
 .bodycombat {
     -fx-background-image: url("img/body_combat.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;    
 }
 .stretching {
     -fx-background-image: url("img/stretching.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;
 }
 .cardio {
     -fx-background-image: url("img/cardio.png");
     -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-radius: 8;
+    -fx-background-clip: padding-box, border-box;
 }
 
