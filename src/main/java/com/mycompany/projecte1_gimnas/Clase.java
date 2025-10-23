@@ -10,13 +10,19 @@ package com.mycompany.projecte1_gimnas;
  */
 public class Clase {
     private String class_name;
-    private String instructor;
+    private int instructor;
     private int aforament;
-
-    public Clase(String class_name, String instructor, int aforament){
-        this.class_name=class_name;
-        this.instructor=instructor;
-        this.aforament=aforament;
+    private String date;
+    private String start_time;
+    private String end_time;
+    
+    public Clase(String class_name, int instructor, int aforament, String date, String start_time, String end_time) {
+        this.class_name = class_name;
+        this.instructor = instructor;
+        this.aforament = aforament;
+        this.date = date;
+        this.start_time = start_time;
+        this.end_time = end_time;
     }
     
     public String getClass_name() {
@@ -27,11 +33,11 @@ public class Clase {
         this.class_name = class_name;
     }
 
-    public String getInstructor() {
+    public int getInstructor() {
         return instructor;
     }
 
-    public void setInstructor(String instructor) {
+    public void setInstructor(int instructor) {
         this.instructor = instructor;
     }
 
@@ -41,6 +47,30 @@ public class Clase {
 
     public void setAforament(int aforament) {
         this.aforament = aforament;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
     }
 }
 

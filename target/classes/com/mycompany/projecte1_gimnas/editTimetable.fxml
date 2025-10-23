@@ -77,10 +77,13 @@
             <Image url="@img/arrow.png" />
          </image>
       </ImageView>
-      <TableView layoutX="428.0" layoutY="120.0" prefHeight="887.0" prefWidth="1400.0">
+      <TableView fx:id="class_table" layoutX="428.0" layoutY="120.0" prefHeight="887.0" prefWidth="1400.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="class_name" editable="false" prefWidth="294.0" text="Nom Classe" />
+            <TableColumn fx:id="instructor" editable="false" prefWidth="216.0" text="Instructor" />
+            <TableColumn fx:id="capacity" editable="false" prefWidth="279.0" text="Aforament" />
+            <TableColumn fx:id="start_time" editable="false" prefWidth="300.0" text="Inici" />
+            <TableColumn fx:id="end_time" editable="false" prefWidth="310.0" text="Final" />
         </columns>
       </TableView>
    </children>
