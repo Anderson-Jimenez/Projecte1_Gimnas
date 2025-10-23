@@ -46,7 +46,7 @@ public class Main_panell_Controller {
 
     @FXML
     void manageAppointments(ActionEvent event) {
-
+        
     }
 
     @FXML

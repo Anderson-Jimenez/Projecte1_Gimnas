@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.Edit_timetable_Controller">
+   <children>
+      <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
+         <children>
+            <Circle layoutX="58.0" layoutY="52.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Text fill="#797979" layoutX="93.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anderson Stiven Jimenez">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#d7d7d7" layoutX="93.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Separator layoutX="48.0" layoutY="101.0" prefHeight="1.0" prefWidth="276.0" />
+            <Button fx:id="assignInstructorsBtn" layoutX="48.0" layoutY="142.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" text="Gestionar Clients">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="990.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="adm_professionals" layoutX="21.0" layoutY="236.0" mnemonicParsing="false" onAction="#professional_administration" prefHeight="69.0" prefWidth="330.0" styleClass="redBg" text="Administrar Professionals">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Rectangle arcHeight="5.0" fill="#00000080" height="1080.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
+      <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
+      <Button fx:id="adm_professionals1" layoutX="1540.0" layoutY="14.0" mnemonicParsing="false" onAction="#professional_administration" prefHeight="69.0" prefWidth="288.0" styleClass="redBg" text="Afegir Instructor">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="spinning_instructor" layoutX="480.0" layoutY="173.0" mnemonicParsing="false" onAction="#show_spinning_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="spinning" text="Spinning" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="ioga_instructor" layoutX="827.0" layoutY="173.0" mnemonicParsing="false" onAction="#show_ioga_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="ioga" text="Ioga" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="body_pump_instructor" layoutX="1177.0" layoutY="173.0" mnemonicParsing="false" onAction="#show_body_pump_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="bodypump" text="BodyPump" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="crossfit_instructor" layoutX="1536.0" layoutY="173.0" mnemonicParsing="false" onAction="#show_crossfit_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="crossfit" text="Crossfit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="zumba_instructor" layoutX="480.0" layoutY="441.0" mnemonicParsing="false" onAction="#show_zumba_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="zumba" text="Zumba" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="pilates_instructor" layoutX="827.0" layoutY="441.0" mnemonicParsing="false" onAction="#show_pilates_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="pilates" text="Pilates" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="boxing_instructor" layoutX="1177.0" layoutY="441.0" mnemonicParsing="false" onAction="#show_boxing_instructor" prefHeight="199.0" prefWidth="277.0" style="-fx-background-radius: 10;" styleClass="boxing" text="Boxing" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="hitt_instructor" layoutX="1536.0" layoutY="441.0" mnemonicParsing="false" onAction="#show_hitt_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="hitt" text="HITT">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="step_instructor" layoutX="480.0" layoutY="702.0" mnemonicParsing="false" onAction="#show_step_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="step" text="Step" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="body_combat_instructor" layoutX="827.0" layoutY="702.0" mnemonicParsing="false" onAction="#show_body_combat_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="bodycombat" text="BodyCombat" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="stretching_instructor" layoutX="1177.0" layoutY="702.0" mnemonicParsing="false" onAction="#show_stretching_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="stretching" text="Stretching" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="cardio_instructor" layoutX="1536.0" layoutY="702.0" mnemonicParsing="false" onAction="#show_cardio_instructor" prefHeight="199.0" prefWidth="277.0" styleClass="cardio" text="Cardio" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

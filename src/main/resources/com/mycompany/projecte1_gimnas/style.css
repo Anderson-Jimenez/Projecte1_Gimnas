@@ -27,3 +27,79 @@
     -fx-text-fill: #FE5D5D;
     -fx-font-size:18px;
 }
+.spinning {
+    -fx-background-image: url("img/Spinning.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.ioga {
+    -fx-background-image: url("img/yoga.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+
+}
+.bodypump {
+    -fx-background-image: url("img/body_pump.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+
+}
+.crossfit {
+    -fx-background-image: url("img/crossfit.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+
+}
+.zumba {
+    -fx-background-image: url("img/zumba.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+
+}.pilates {
+    -fx-background-image: url("img/pilates.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.boxing {
+    -fx-background-image: url("img/boxing.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.hitt {
+    -fx-background-image: url("img/hitt.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.step {
+    -fx-background-image: url("img/step.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.bodycombat {
+    -fx-background-image: url("img/body_combat.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.stretching {
+    -fx-background-image: url("img/stretching.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+.cardio {
+    -fx-background-image: url("img/cardio.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-radius: 8;
+}
+
