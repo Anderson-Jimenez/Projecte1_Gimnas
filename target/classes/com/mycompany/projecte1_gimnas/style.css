@@ -27,3 +27,16 @@
     -fx-text-fill: #FE5D5D;
     -fx-font-size:18px;
 }
+.classes {
+    -fx-cursor: hand;
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+
+.classes:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 15, 0, 0, 8);
+}
+

@@ -31,7 +31,7 @@ public class Main_panell_Controller {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        App.setRoot("editTimetable");
+        App.setRoot("professional_assign");
     }
 
     @FXML

@@ -3,42 +3,48 @@ package com.mycompany.projecte1_gimnas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class Professional_assignController {
+
+    @FXML
+    private Label Spinning;
+
+    @FXML
+    private Button add_instructor_btn;
 
     @FXML
     private Button adm_professionals;
 
     @FXML
-    private Button adm_professionals1;
-
-    @FXML
     private Button assignInstructorsBtn;
 
     @FXML
-    private Button body_combat_instructor;
+    private Label body_combat;
 
     @FXML
-    private Button body_pump_instructor;
+    private Label body_pump;
 
     @FXML
-    private Button boxing_instructor;
+    private Label boxing;
 
     @FXML
-    private Button cardio_instructor;
+    private Label cardio;
 
     @FXML
     private Button closeSessionBtn;
 
     @FXML
-    private Button crossfit_instructor;
+    private Label crossfit;
 
     @FXML
-    private Button hitt_instructor;
+    private Label hitt;
 
     @FXML
-    private Button ioga_instructor;
+    private Label ioga;
 
     @FXML
     private AnchorPane mainBackground;
@@ -50,22 +56,27 @@ public class Professional_assignController {
     private Button manageClientsBtn;
 
     @FXML
-    private Button pilates_instructor;
+    private Label pilates;
+
+    @FXML
+    private Text rol;
 
     @FXML
     private Button showStatsBtn;
 
     @FXML
-    private Button spinning_instructor;
+    private Label step;
 
     @FXML
-    private Button step_instructor;
+    private Text username;
 
     @FXML
-    private Button stretching_instructor;
+    private Label zumba;
 
     @FXML
-    private Button zumba_instructor;
+    void add_instructor(ActionEvent event) {
+
+    }
 
     @FXML
     void assignInstructors(ActionEvent event) {
@@ -98,62 +109,62 @@ public class Professional_assignController {
     }
 
     @FXML
-    void show_body_combat_instructor(ActionEvent event) {
+    void show_body_combat_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_body_pump_instructor(ActionEvent event) {
+    void show_body_pump_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_boxing_instructor(ActionEvent event) {
+    void show_boxing_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_cardio_instructor(ActionEvent event) {
+    void show_cardio_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_crossfit_instructor(ActionEvent event) {
+    void show_crossfit_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_hitt_instructor(ActionEvent event) {
+    void show_hitt_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_ioga_instructor(ActionEvent event) {
+    void show_pilates_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_pilates_instructor(ActionEvent event) {
+    void show_spinning_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_spinning_instructor(ActionEvent event) {
+    void show_step_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_step_instructor(ActionEvent event) {
+    void show_stretching_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_stretching_instructor(ActionEvent event) {
+    void show_yoga_instructor(MouseEvent event) {
 
     }
 
     @FXML
-    void show_zumba_instructor(ActionEvent event) {
+    void show_zumba_instructor(MouseEvent event) {
 
     }
 
