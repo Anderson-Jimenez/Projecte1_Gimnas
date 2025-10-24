@@ -135,8 +135,8 @@ public class Edit_timetable_Controller {
     private Text role;
     
     @FXML
-    void addClass(ActionEvent event) {
-        
+    void addClass(ActionEvent event) throws IOException {
+        App.setRoot("editTimetable-addClass");
     }
     
     @FXML 
