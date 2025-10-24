@@ -5,12 +5,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class Main_panell_Controller {
 
     @FXML
     private Button assignInstructorsBtn;
-
+    @FXML
+    private Text rol;
+    
+    @FXML
+    private Text username;
+    
     @FXML
     private Button closeSessionBtn;
 

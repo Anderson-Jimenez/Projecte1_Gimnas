@@ -62,7 +62,7 @@
                </font>
             </Button>
          </children></Pane>
-      <Rectangle arcHeight="5.0" fill="#00000080" height="1080.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
+      <Rectangle arcHeight="5.0" fill="#ffffff80" height="1080.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
       <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
       <Button fx:id="add_instructor_btn" layoutX="1540.0" layoutY="14.0" mnemonicParsing="false" onAction="#add_instructor" prefHeight="69.0" prefWidth="288.0" styleClass="redBg" text="Afegir Instructor">
          <font>
@@ -71,7 +71,7 @@
       </Button>
       <StackPane layoutX="480.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="spinning_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_spinning_instructor" opacity="0.81" pickOnBounds="true" smooth="false">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_spinning_instructor" opacity="0.81" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@img/Spinning.png" />
                </image>
@@ -85,7 +85,7 @@
       </StackPane>
       <StackPane layoutX="827.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="ioga_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_yoga_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_yoga_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/yoga.png" />
                </image>
@@ -99,7 +99,7 @@
       </StackPane>
       <StackPane layoutX="1177.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="body_pump_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_pump_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_pump_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/body_pump.png" />
                </image>
@@ -113,7 +113,7 @@
       </StackPane>
       <StackPane layoutX="1536.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="crossfit_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_crossfit_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_crossfit_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/crossfit.png" />
                </image>
@@ -127,7 +127,7 @@
       </StackPane>
       <StackPane layoutX="480.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="zumba_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_zumba_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_zumba_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/zumba.png" />
                </image>
@@ -141,7 +141,7 @@
       </StackPane>
       <StackPane layoutX="827.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="pilates_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_pilates_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_pilates_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/pilates.png" />
                </image>
@@ -155,7 +155,7 @@
       </StackPane>
       <StackPane layoutX="1177.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="boxing_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_boxing_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_boxing_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/boxing.png" />
                </image>
@@ -170,7 +170,7 @@
       </StackPane>
       <StackPane layoutX="1536.0" layoutY="441.0" prefHeight="199.0" prefWidth="247.0" styleClass="classes">
          <children>
-            <ImageView fx:id="hitt_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_hitt_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_hitt_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/hiit.png" />
                </image>
@@ -185,7 +185,7 @@
       </StackPane>
       <StackPane layoutX="480.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="step_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_step_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_step_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/step.png" />
                </image>
@@ -200,7 +200,7 @@
       </StackPane>
       <StackPane layoutX="827.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="body_combat_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_combat_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_combat_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/body_combat.png" />
                </image>
@@ -215,7 +215,7 @@
       </StackPane>
       <StackPane layoutX="1177.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="stretching_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_stretching_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_stretching_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/stretching.png" />
                </image>
@@ -232,7 +232,7 @@
       </StackPane>
       <StackPane layoutX="1536.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
          <children>
-            <ImageView fx:id="cardio_instructor" fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_cardio_instructor" opacity="0.81" pickOnBounds="true">
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_cardio_instructor" opacity="0.81" pickOnBounds="true">
                <image>
                   <Image url="@img/cardio.png" />
                </image>

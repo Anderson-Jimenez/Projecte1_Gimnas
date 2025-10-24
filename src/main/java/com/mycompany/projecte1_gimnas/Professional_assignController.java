@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -74,13 +75,13 @@ public class Professional_assignController {
     private Label zumba;
 
     @FXML
-    void add_instructor(ActionEvent event) {
-
+    void add_instructor(ActionEvent event) throws IOException {
+        App.setRoot("main_panell");
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) {
-
+    void assignInstructors(ActionEvent event) throws IOException {
+        App.setRoot("main_panell");
     }
 
     @FXML
