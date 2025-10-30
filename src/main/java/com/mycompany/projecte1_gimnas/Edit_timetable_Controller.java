@@ -190,7 +190,7 @@ public class Edit_timetable_Controller {
     
     @FXML
     void assignInstructors(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -216,7 +216,7 @@ public class Edit_timetable_Controller {
 
     @FXML
     void showStats(ActionEvent event) {
-
+        
     }
 
 }

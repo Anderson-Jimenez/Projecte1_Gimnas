@@ -2,18 +2,16 @@ package com.mycompany.projecte1_gimnas.model;
 
 public class Instructor {
 
-    private String surnames;
     private String name;
+    private String surnames;
     private String dni;
 
-    // Constructor
-    public Instructor(String surnames, String name, String dni) {
-        this.surnames = surnames;
+    public Instructor(String name, String surnames, String dni) {
         this.name = name;
+        this.surnames = surnames;
         this.dni = dni;
     }
 
-    // Getters (requeridos para que PropertyValueFactory funcione)
     public String getName() {
         return name;
     }
@@ -22,11 +20,10 @@ public class Instructor {
         return surnames;
     }
 
-    public String getDNI() {
+    public String getDni() {      // 🔹 Este getter es obligatorio
         return dni;
     }
 
-    // Setters opcionales (por si luego quieres modificar los datos)
     public void setName(String name) {
         this.name = name;
     }
@@ -35,7 +32,7 @@ public class Instructor {
         this.surnames = surnames;
     }
 
-    public void setDNI(String dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 }

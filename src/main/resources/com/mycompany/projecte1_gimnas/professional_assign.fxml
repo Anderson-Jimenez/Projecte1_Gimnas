@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -69,184 +67,16 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <StackPane fx:id="spinning_box" layoutX="480.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_spinning_instructor" opacity="0.81" pickOnBounds="true" smooth="false">
-               <image>
-                  <Image url="@img/Spinning.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Spinning" prefHeight="42.0" prefWidth="148.0" text="Spinning" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane fx:id="ioga_box" layoutX="827.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_yoga_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/yoga.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Ioga" prefHeight="42.0" prefWidth="76.0" text="Ioga" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane fx:id="body_pump_box" layoutX="1177.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_pump_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/body_pump.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="BodyPump" prefHeight="42.0" prefWidth="181.0" text="Body Pump" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Noto Sans Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane fx:id="crossfit_box" layoutX="1536.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_crossfit_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/crossfit.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Crossfit" contentDisplay="CENTER" prefHeight="42.0" prefWidth="124.0" text="Crossfit" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane fx:id="zumba_box" layoutX="480.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_zumba_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/zumba.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Zumba" prefHeight="42.0" prefWidth="110.0" text="Zumba" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane fx:id="pilates_box" layoutX="827.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_pilates_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/pilates.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Pilates" prefHeight="42.0" prefWidth="110.0" text="Pilates" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane fx:id="boxing_box" layoutX="1177.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_boxing_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/boxing.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Boxing" prefHeight="42.0" prefWidth="110.0" text="Boxing" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-
-      </StackPane>
-      <StackPane fx:id="hitt_box" layoutX="1536.0" layoutY="441.0" prefHeight="199.0" prefWidth="247.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_hitt_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/hiit.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="HITT" prefHeight="42.0" prefWidth="74.0" text="HITT" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-
-      </StackPane>
-      <StackPane fx:id="step_box" layoutX="480.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_step_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/step.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Step" prefHeight="42.0" prefWidth="71.0" text="Step" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-
-      </StackPane>
-      <StackPane fx:id="body_combat_box" layoutX="827.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_combat_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/body_combat.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="BodyCombat" prefHeight="42.0" prefWidth="212.0" text="Body Combat" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-
-      </StackPane>
-      <StackPane fx:id="stretching_box" layoutX="1177.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_stretching_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/stretching.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Stretching" prefHeight="42.0" prefWidth="164.0" text="Stretching" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </StackPane>
-      <StackPane fx:id="cardio_box" layoutX="1536.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
-         <children>
-            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_cardio_instructor" opacity="0.81" pickOnBounds="true">
-               <image>
-                  <Image url="@img/cardio.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="Cardio" prefHeight="42.0" prefWidth="106.0" text="Cardio " textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </StackPane>
+      <TableView fx:id="instructor_table" layoutX="537.0" layoutY="133.0" prefHeight="893.0" prefWidth="1220.0">
+         <columns>
+            <TableColumn fx:id="instructor_name" editable="false" prefWidth="294.0" text="Nom Instructor" />
+            <TableColumn fx:id="instructor_surnames" editable="false" prefWidth="216.0" text="Cognoms" />
+            <TableColumn fx:id="instructor_dni" editable="false" prefWidth="279.0" text="DNI" />
+            <TableColumn fx:id="edit" editable="false" prefWidth="190.0" text="Modificar Dades" />
+            <TableColumn fx:id="delete" editable="false" prefWidth="238.0" text="Eliminar" />
+         </columns>
+      </TableView>
+      <ComboBox fx:id="class_name" layoutX="438.0" layoutY="57.0" onAction="#show_instructors" prefHeight="26.0" prefWidth="213.0" />
    </children>
    <stylesheets>
       <URL value="@style.css" />

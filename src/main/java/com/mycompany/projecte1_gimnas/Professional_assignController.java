@@ -2,82 +2,180 @@ package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 public class Professional_assignController {
 
-    // ===== Labels de clases =====
-    @FXML private Label Spinning;
-    @FXML private Label Ioga;
-    @FXML private Label BodyPump;
-    @FXML private Label Crossfit;
-    @FXML private Label Zumba;
-    @FXML private Label Pilates;
-    @FXML private Label Boxing;
-    @FXML private Label HITT;
-    @FXML private Label Step;
-    @FXML private Label BodyCombat;
-    @FXML private Label Stretching;
-    @FXML private Label Cardio;
-
-    // ===== Contenedores de cada clase =====
-    @FXML private StackPane spinning_box;
-    @FXML private StackPane ioga_box;
-    @FXML private StackPane body_pump_box;
-    @FXML private StackPane crossfit_box;
-    @FXML private StackPane zumba_box;
-    @FXML private StackPane pilates_box;
-    @FXML private StackPane boxing_box;
-    @FXML private StackPane hitt_box;
-    @FXML private StackPane step_box;
-    @FXML private StackPane body_combat_box;
-    @FXML private StackPane stretching_box;
-    @FXML private StackPane cardio_box;
-
-    // Contenedor principal (donde pondremos la tabla)
-    @FXML private AnchorPane mainBackground;
-
-    
-    // ADMINISTRACION BARRA NAVEGACION Y AÑADIR INSTRUCTOR
+    @FXML
+    private Button add_instructor_btn;
 
     @FXML
-    void add_instructor(ActionEvent event) {
-        
+    private Button assignInstructorsBtn;
+
+    @FXML
+    private ComboBox<String> class_name;
+
+    @FXML
+    private Button closeSessionBtn;
+
+    @FXML
+    private TableColumn<Instructor, String> instructor_dni;
+
+    @FXML
+    private TableColumn<Instructor, String> instructor_name;
+
+    @FXML
+    private TableColumn<Instructor, String> instructor_surnames;
+
+    @FXML
+    private TableColumn<Instructor, Void> edit;
+
+    @FXML
+    private TableColumn<Instructor, Void> delete;
+
+    @FXML
+    private TableView<Instructor> instructor_table;
+
+    @FXML
+    private AnchorPane mainBackground;
+
+    @FXML
+    private Button manageAppointmentsBtn;
+
+    @FXML
+    private Button manageClientsBtn;
+
+    @FXML
+    private Text rol;
+
+    @FXML
+    private Button showStatsBtn;
+
+    @FXML
+    private Text username;
+
+    @FXML
+    public void initialize() throws ClassNotFoundException {
+        // Llenar ComboBox
+        ObservableList<String> class_names = FXCollections.observableArrayList(
+            "Spinning", "Ioga", "BodyPump", "Crossfit", "Zumba",
+            "Pilates", "Boxing", "HITT", "Step", "BodyCombat",
+            "Stretching", "Cardio"
+        );
+        class_name.setItems(class_names);
+
+        // Configurar columnas
+        instructor_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        instructor_surnames.setCellValueFactory(new PropertyValueFactory<>("surnames"));
+        instructor_dni.setCellValueFactory(new PropertyValueFactory<>("dni"));
+
+        // Agregar botones Editar y Eliminar
+        agregarBotonesEditarYEliminar();
+
+        // Cargar datos
+        cargarInstructores();
+    }
+
+    private void cargarInstructores() throws ClassNotFoundException {
+        ObservableList<Instructor> lista = FXCollections.observableArrayList();
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT name, surnames, dni FROM instructor")) {
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String surnames = rs.getString("surnames");
+                String dni = rs.getString("dni");
+                lista.add(new Instructor(name, surnames, dni));
+            }
+
+            instructor_table.setItems(lista);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarBotonesEditarYEliminar() {
+        // Botón Editar
+        edit.setCellFactory(col -> new TableCell<Instructor, Void>() {
+            private final Button btn = new Button("Editar");
+            {
+                btn.setOnAction(e -> {
+                    Instructor ins = getTableView().getItems().get(getIndex());
+                    System.out.println("📝 Editar instructor: " + ins.getName());
+                    // Aquí abrirías tu formulario de edición
+                });
+            }
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : btn);
+            }
+        });
+
+        // Botón Eliminar
+        delete.setCellFactory(col -> new TableCell<Instructor, Void>() {
+            private final Button btn = new Button("Eliminar");
+            {
+                btn.setOnAction(e -> {
+                    Instructor ins = getTableView().getItems().get(getIndex());
+                    eliminarInstructor(ins);
+                });
+            }
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : btn);
+            }
+        });
+    }
+
+    private void eliminarInstructor(Instructor ins) {
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("DELETE FROM instructor WHERE dni = ?")) {
+
+            stmt.setString(1, ins.getDni());
+            stmt.executeUpdate();
+            instructor_table.getItems().remove(ins);
+            System.out.println("❌ Instructor eliminado: " + ins.getName());
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) {
-
-    }
+    void add_instructor(ActionEvent event) {}
 
     @FXML
-    void closeSession(ActionEvent event) {
-
-    }
+    void assignInstructors(ActionEvent event) {}
 
     @FXML
-    void manageAppointments(ActionEvent event) {
-
-    }
+    void closeSession(ActionEvent event) {}
 
     @FXML
-    void manageClients(ActionEvent event) {
+    void manageAppointments(ActionEvent event) {}
 
-    }
+    @FXML
+    void manageClients(ActionEvent event) {}
 
     @FXML
     void professional_administration(ActionEvent event) throws IOException {
@@ -85,128 +183,40 @@ public class Professional_assignController {
     }
 
     @FXML
-    void showStats(ActionEvent event) {
+    void show_instructors(ActionEvent event) throws ClassNotFoundException {
+        String selected_class = class_name.getValue();
+        System.out.println(selected_class);
 
-    }
-    
-    
-    
-    
-    
-    // ===== EVENTOS DE CLICK EN CLASES ===== //
+        Connection conn = DatabaseConnection.getConnection();
+        if (conn == null) {
+            System.out.println("❌ No se pudo conectar a la base de datos.");
+        }
 
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "SELECT DISTINCT i.name, i.surnames, i.dni " +
+                "FROM instructor i " +
+                "INNER JOIN classes c ON c.fk_id_instructor = i.ID " +
+                "WHERE c.name = ?")) {
 
-    @FXML void show_spinning_instructor(MouseEvent event) {
-        showInstructorTable(Spinning.getText()); 
-    }
-    
-    @FXML void show_zumba_instructor(MouseEvent event) {
-        showInstructorTable(Zumba.getText()); 
-    }
-    
-    @FXML void show_crossfit_instructor(MouseEvent event) {
-        showInstructorTable(Crossfit.getText()); 
-    }
-    
-    @FXML void show_body_combat_instructor(MouseEvent event) {
-        showInstructorTable(BodyCombat.getText()); 
-    }
-    
-    @FXML void show_body_pump_instructor(MouseEvent event) {
-        showInstructorTable(BodyPump.getText()); 
-    }
-    
-    @FXML void show_boxing_instructor(MouseEvent event) {
-        showInstructorTable(Boxing.getText()); 
-    }
-    
-    @FXML void show_hitt_instructor(MouseEvent event) {
-        showInstructorTable(HITT.getText()); 
-    }
-    
-    @FXML void show_pilates_instructor(MouseEvent event) {
-        showInstructorTable(Pilates.getText()); 
-    }
-    
-    @FXML void show_step_instructor(MouseEvent event) {
-        showInstructorTable(Step.getText()); 
-    }
-    
-    @FXML void show_stretching_instructor(MouseEvent event) {
-        showInstructorTable(Stretching.getText()); 
-    }
-    
-    @FXML void show_cardio_instructor(MouseEvent event) {
-        showInstructorTable(Cardio.getText()); 
-    }
-    
-    @FXML void show_yoga_instructor(MouseEvent event) {
-        showInstructorTable(Ioga.getText()); 
+            stmt.setString(1, selected_class);
+            ResultSet rs = stmt.executeQuery();
+
+            ObservableList<Instructor> instructors = FXCollections.observableArrayList();
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String surnames = rs.getString("surnames");
+                String dni = rs.getString("dni");
+                instructors.add(new Instructor(name, surnames, dni));
+            }
+
+            instructor_table.setItems(instructors);
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    // ======================================
-    // ===== LÓGICA PARA MOSTRAR TABLA ======
-    // ======================================
-
-    private void showInstructorTable(String className) {
-        // Ocultar todos los cuadros de clases
-        spinning_box.setVisible(false);
-        ioga_box.setVisible(false);
-        body_pump_box.setVisible(false);
-        crossfit_box.setVisible(false);
-        zumba_box.setVisible(false);
-        pilates_box.setVisible(false);
-        boxing_box.setVisible(false);
-        hitt_box.setVisible(false);
-        step_box.setVisible(false);
-        body_combat_box.setVisible(false);
-        stretching_box.setVisible(false);
-        cardio_box.setVisible(false);
-
-        // Crear una tabla simple de instructores
-        TableView<Instructor> table = new TableView<>();
-
-        TableColumn<Instructor, String> nameCol = new TableColumn<>("Name");
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        TableColumn<Instructor, String> emailCol = new TableColumn<>("Surnames");
-        emailCol.setCellValueFactory(new PropertyValueFactory<>("Surnames"));
-
-        TableColumn<Instructor, String> phoneCol = new TableColumn<>("DNI");
-        phoneCol.setCellValueFactory(new PropertyValueFactory<>("dni"));
-
-        table.getColumns().addAll(nameCol, emailCol, phoneCol);
-
-        // Datos de ejemplo (puedes cambiarlos por los de tu base de datos)
-        ObservableList<Instructor> data = FXCollections.observableArrayList(
-            new Instructor("Garcia", "Laura", "612345678"),
-            new Instructor("Pérez", "Carlos", "698765432")
-        );
-        table.setItems(data);
-
-        /* Botón para volver a las clases
-        Button backBtn = new Button("Volver");
-        backBtn.setOnAction(e -> showClasses());*/
-
-
-        System.out.println("Mostrando tabla de instructores de " + className);
-    }
-
-    private void showClasses() {
-        // Al volver, limpiamos el contenido y mostramos los cuadros
-        mainBackground.getChildren().clear();
-
-        spinning_box.setVisible(true);
-        ioga_box.setVisible(true);
-        body_pump_box.setVisible(true);
-        crossfit_box.setVisible(true);
-        zumba_box.setVisible(true);
-        pilates_box.setVisible(true);
-        boxing_box.setVisible(true);
-        hitt_box.setVisible(true);
-        step_box.setVisible(true);
-        body_combat_box.setVisible(true);
-        stretching_box.setVisible(true);
-        cardio_box.setVisible(true);
-    }
+    @FXML
+    void showStats(ActionEvent event) {}
 }

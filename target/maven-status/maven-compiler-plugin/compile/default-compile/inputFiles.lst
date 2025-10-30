@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Main_panell_Controller.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/App.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/LoginController.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/model/Instructor.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/ProbaController.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/DatabaseConnection.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_Controller.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Professional_assignController.java
-=======
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/ProbaController.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/DatabaseConnection.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_Controller.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Clase.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/App.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Main_panell_Controller.java
-/home/asix1/Escritorio/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/LoginController.java
->>>>>>> artur
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\model\Instructor.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\Edit_timetable_Controller.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\ProbaController.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\App.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\Edit_timetable_add_class_Controller.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\Professional_assignController.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\DatabaseConnection.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\Professional_assignXuloController.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\Main_panell_Controller.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\Clase.java
+C:\Users\ander\Desktop\Projecte1_Gimnas\src\main\java\com\mycompany\projecte1_gimnas\LoginController.java
