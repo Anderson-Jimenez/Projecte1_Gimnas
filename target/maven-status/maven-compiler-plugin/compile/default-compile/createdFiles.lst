@@ -1,8 +1,17 @@
 com/mycompany/projecte1_gimnas/Edit_timetable_Controller.class
+<<<<<<< HEAD
 ProbaController.class
 com/mycompany/projecte1_gimnas/Professional_assignController.class
 com/mycompany/projecte1_gimnas/App.class
 com/mycompany/projecte1_gimnas/LoginController.class
 com/mycompany/projecte1_gimnas/DatabaseConnection.class
 com/mycompany/projecte1_gimnas/model/Instructor.class
+=======
+com/mycompany/projecte1_gimnas/LoginController.class
+com/mycompany/projecte1_gimnas/DatabaseConnection.class
+ProbaController.class
+com/mycompany/projecte1_gimnas/Clase.class
+com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.class
+com/mycompany/projecte1_gimnas/App.class
+>>>>>>> artur
 com/mycompany/projecte1_gimnas/Main_panell_Controller.class
