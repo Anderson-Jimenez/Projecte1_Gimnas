@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -26,7 +27,7 @@ public class Edit_timetable_add_class_Controller {
         ObservableList<String> days = FXCollections.observableArrayList("dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte");
         day.setItems(days);
         
-        ObservableList<String> hours = FXCollections.observableArrayList("06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00");
+        ObservableList<String> hours = FXCollections.observableArrayList("06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
         hour.setItems(hours);
         
         ObservableList<String> typeClasses = FXCollections.observableArrayList("Spinning", "Ioga","BodyPump","Crossfit","Zumba","Pilates","Stretching","Cardio","BodyCombat","HIIT","Boxing","Step");
@@ -107,32 +108,84 @@ public class Edit_timetable_add_class_Controller {
 
     @FXML
     void addClass(ActionEvent event) throws IOException, ClassNotFoundException {
+        boolean flag=false;
+        
         String selected_day=day.getValue();
         String selected_hour=hour.getValue();
-        String selected_class=typeClass.getValue();
-        int selected_instructor=instructor.getValue();
-        int selectedCapacity=capacity.getValue();
         
-        Connection conn = DatabaseConnection.getConnection();
+        Connection conn1 = DatabaseConnection.getConnection();
         
-        if (conn == null) {
+        if (conn1 == null) {
             System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
         }
 
         try {
-                String sql="INPUT";
-                PreparedStatement stmt=conn.prepareStatement(sql);
+                String sql="SELECT * FROM classes WHERE date=?";
+                PreparedStatement stmt=conn1.prepareStatement(sql);
                 stmt.setString(1,selected_day);
                 
                 ResultSet rs = stmt.executeQuery();
+                
+                
+                while (rs.next() && flag==false) {
+                    String hour = rs.getString("start_time");
+                    if(hour.equals(selected_hour)==true){
+                        flag=true;
+                    }
+                }
             
-            conn.close();
+            conn1.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
-        App.setRoot("editTimetable");
+        if(flag==true){
+            Alert a = new Alert(AlertType.ERROR);
+            a.setContentText("Ja existeix una classe en aquesta hora");
+            a.show();
+        }
+        else{
+            String selected_class=typeClass.getValue();
+            
+            String end_hour=selected_hour.substring(0, 2);
+            int end_hour_int= Integer.parseInt(end_hour);
+            end_hour_int=end_hour_int+1;
+
+            String final_hour= String.valueOf(end_hour_int);
+            final_hour=final_hour+selected_hour.substring(2);
+
+            int selected_instructor=instructor.getValue();
+            int selectedCapacity=capacity.getValue();
+
+        // Insert de classes a la taula d'horaris
+        
+            Connection conn2 = DatabaseConnection.getConnection();
+        
+            if (conn2 == null) {
+                System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+            }
+
+            try {
+                    String sql="INSERT INTO classes (name, date, start_time, end_time, capacity, fk_id_instructor) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement stmt=conn2.prepareStatement(sql);
+                    stmt.setString(1,selected_class);
+                    stmt.setString(2,selected_day);
+                    stmt.setString(3,selected_hour);
+                    stmt.setString(4,final_hour);
+                    stmt.setInt(5, selectedCapacity);
+                    stmt.setInt(6, selected_instructor);
+
+                    stmt.executeUpdate();
+
+                conn2.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            App.setRoot("editTimetable");
+        }
+        
     }
 
     @FXML
