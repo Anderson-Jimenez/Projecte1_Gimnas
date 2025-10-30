@@ -189,8 +189,8 @@ public class Edit_timetable_Controller {
     }
     
     @FXML
-    void assignInstructors(ActionEvent event) {
-
+    void assignInstructors(ActionEvent event) throws IOException {
+        App.setRoot("professional_assign");
     }
 
     @FXML

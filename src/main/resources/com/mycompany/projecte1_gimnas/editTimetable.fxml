@@ -33,7 +33,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="assignInstructorsBtn" layoutX="45.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Assignar Instructors">
+            <Button fx:id="assignInstructorsBtn" layoutX="36.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="292.0" text="Administrar Instructors">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
