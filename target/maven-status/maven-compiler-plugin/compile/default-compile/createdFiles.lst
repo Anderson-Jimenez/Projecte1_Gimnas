@@ -4,4 +4,5 @@ com/mycompany/projecte1_gimnas/Professional_assignController.class
 com/mycompany/projecte1_gimnas/App.class
 com/mycompany/projecte1_gimnas/LoginController.class
 com/mycompany/projecte1_gimnas/DatabaseConnection.class
+com/mycompany/projecte1_gimnas/model/Instructor.class
 com/mycompany/projecte1_gimnas/Main_panell_Controller.class
