@@ -11,65 +11,54 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.util.Callback;
 
 public class Professional_assignController {
 
-    @FXML
+    @FXML 
     private Button add_instructor_btn;
-
-    @FXML
+    @FXML 
     private Button assignInstructorsBtn;
-
-    @FXML
+    @FXML 
     private ComboBox<String> class_name;
-
-    @FXML
+    @FXML 
     private Button closeSessionBtn;
-
-    @FXML
+    @FXML 
     private TableColumn<Instructor, String> instructor_dni;
-
-    @FXML
+    @FXML 
     private TableColumn<Instructor, String> instructor_name;
-
-    @FXML
+    @FXML 
     private TableColumn<Instructor, String> instructor_surnames;
+    @FXML 
+    private TableColumn<Instructor, String> instructor_password;
+    @FXML 
+    private TableColumn<Instructor, String> instructor_email;
+    @FXML 
+    private TableColumn<Instructor, String> instructor_number;
+    @FXML 
+    private TableColumn<Instructor, String> instructor_address;
+    @FXML 
+    private TableColumn<Instructor, String> instructor_status;
 
-    @FXML
-    private TableColumn<Instructor, Void> edit;
 
-    @FXML
-    private TableColumn<Instructor, Void> delete;
-
-    @FXML
-    private TableView<Instructor> instructor_table;
-
-    @FXML
-    private AnchorPane mainBackground;
-
-    @FXML
-    private Button manageAppointmentsBtn;
-
-    @FXML
-    private Button manageClientsBtn;
-
-    @FXML
-    private Text rol;
-
-    @FXML
-    private Button showStatsBtn;
-
-    @FXML
-    private Text username;
+    @FXML private TableColumn<Instructor, Void> edit;
+    @FXML private TableColumn<Instructor, Void> delete;
+    @FXML private TableView<Instructor> instructor_table;
+    @FXML private AnchorPane mainBackground;
+    @FXML private Button manageAppointmentsBtn;
+    @FXML private Button manageClientsBtn;
+    @FXML private Button edit_instructor_btn;
+    @FXML private Button delete_instructor_btn;
+    @FXML private Text rol;
+    @FXML private Button showStatsBtn;
+    @FXML private Text username;
 
     @FXML
     public void initialize() throws ClassNotFoundException {
@@ -81,29 +70,44 @@ public class Professional_assignController {
         );
         class_name.setItems(class_names);
 
-        // Configurar columnas
+        // Configurar columnas visibles
         instructor_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         instructor_surnames.setCellValueFactory(new PropertyValueFactory<>("surnames"));
         instructor_dni.setCellValueFactory(new PropertyValueFactory<>("dni"));
+        instructor_password.setCellValueFactory(new PropertyValueFactory<>("password"));
+        instructor_email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        instructor_number.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
-        // Agregar botones Editar y Eliminar
-        agregarBotonesEditarYEliminar();
+        instructor_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        instructor_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        // Cargar datos
+
+
+        // Cargar datos iniciales
         cargarInstructores();
     }
 
     private void cargarInstructores() throws ClassNotFoundException {
         ObservableList<Instructor> lista = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM instructor";
+
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT name, surnames, dni FROM instructor")) {
+             ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
+                int id = rs.getInt("ID");
                 String name = rs.getString("name");
                 String surnames = rs.getString("surnames");
                 String dni = rs.getString("dni");
-                lista.add(new Instructor(name, surnames, dni));
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                String address = rs.getString("address");
+                String status = rs.getString("status");
+
+                lista.add(new Instructor(id, name, surnames, dni, password, email, phone, address, status));
             }
 
             instructor_table.setItems(lista);
@@ -113,110 +117,139 @@ public class Professional_assignController {
         }
     }
 
-    private void agregarBotonesEditarYEliminar() {
-        // Botón Editar
-        edit.setCellFactory(col -> new TableCell<Instructor, Void>() {
-            private final Button btn = new Button("Editar");
-            {
-                btn.setOnAction(e -> {
-                    Instructor ins = getTableView().getItems().get(getIndex());
-                    System.out.println("📝 Editar instructor: " + ins.getName());
-                    // Aquí abrirías tu formulario de edición
-                });
-            }
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                setGraphic(empty ? null : btn);
-            }
-        });
+    @FXML
+    void update_instructor(ActionEvent event) throws ClassNotFoundException {
+        Instructor ins = instructor_table.getSelectionModel().getSelectedItem();
 
-        // Botón Eliminar
-        delete.setCellFactory(col -> new TableCell<Instructor, Void>() {
-            private final Button btn = new Button("Eliminar");
-            {
-                btn.setOnAction(e -> {
-                    Instructor ins = getTableView().getItems().get(getIndex());
-                    eliminarInstructor(ins);
-                });
+        if (ins != null) {
+            System.out.println("Eliminant instructor: " + ins.getName());
+
+            try (Connection conn = DatabaseConnection.getConnection()) {
+                if (conn == null) {
+                    System.out.println("❌No so s'ha pogut connectar a la base de dades");
+                }
+                
+                String selectSql = "SELECT status FROM instructor WHERE dni = ?";
+                PreparedStatement selectStmt = conn.prepareStatement(selectSql);
+                selectStmt.setString(1, ins.getDni());
+                ResultSet rs = selectStmt.executeQuery();
+                
+                if(rs.next()){
+                    String currentStatus = rs.getString("status");
+                    String newStatus;
+                    if(currentStatus.equalsIgnoreCase("active")){
+                        newStatus = "inactive";
+                    }
+                    else{
+                        newStatus = "active";
+                    }
+                   
+                    String updateSql = "UPDATE instructor SET status = ? WHERE dni = ?";
+                    PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+                    updateStmt.setString(1, newStatus);
+                    updateStmt.setString(2, ins.getDni());
+                    int rowsAffected = updateStmt.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        System.out.println("✅ Instructor " + ins.getName() + " ahora está " + newStatus);
+                        cargarInstructores(); // refrescar tabla
+                    } 
+                    
+                }
+                
+                
+                
+                
+                
+                
+
+
+                // Actualizar tabla
+                cargarInstructores();
+
+                System.out.println("✅Instructor eliminat correctament");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            @Override
-            protected void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                setGraphic(empty ? null : btn);
-            }
-        });
-    }
-
-    private void eliminarInstructor(Instructor ins) {
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("DELETE FROM instructor WHERE dni = ?")) {
-
-            stmt.setString(1, ins.getDni());
-            stmt.executeUpdate();
-            instructor_table.getItems().remove(ins);
-            System.out.println("❌ Instructor eliminado: " + ins.getName());
-
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setContentText("Selecciona l'instructor que vols desactivar");
+            alerta.show();
         }
     }
 
     @FXML
-    void add_instructor(ActionEvent event) {}
+    void edit_instructor(ActionEvent event) throws IOException {
+        Instructor ins = instructor_table.getSelectionModel().getSelectedItem();
 
-    @FXML
-    void assignInstructors(ActionEvent event) {}
-
-    @FXML
-    void closeSession(ActionEvent event) {}
-
-    @FXML
-    void manageAppointments(ActionEvent event) {}
-
-    @FXML
-    void manageClients(ActionEvent event) {}
-
-    @FXML
-    void professional_administration(ActionEvent event) throws IOException {
-        App.setRoot("main_panell");
+        if (ins != null) {
+            System.out.println("📝 Editar instructor: " + ins.getName());
+            App.setRoot("edit_instructor");
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setContentText("Selecciona l'instructor que vols editar");
+            alerta.show();
+        }
     }
 
     @FXML
     void show_instructors(ActionEvent event) throws ClassNotFoundException {
         String selected_class = class_name.getValue();
-        System.out.println(selected_class);
 
-        Connection conn = DatabaseConnection.getConnection();
-        if (conn == null) {
-            System.out.println("❌ No se pudo conectar a la base de datos.");
+        if (selected_class == null) {
+            System.out.println("Debes seleccionar una clase.");
+            return;
         }
 
-        try (PreparedStatement stmt = conn.prepareStatement(
-                "SELECT DISTINCT i.name, i.surnames, i.dni " +
-                "FROM instructor i " +
-                "INNER JOIN classes c ON c.fk_id_instructor = i.ID " +
-                "WHERE c.name = ?")) {
+        System.out.println("Mostrando instructores de la clase: " + selected_class);
+
+        ObservableList<Instructor> instructors = FXCollections.observableArrayList();
+
+        String sql = "SELECT DISTINCT i.ID, i.name, i.surnames, i.dni, i.password, i.email, i.phone, i.address, i.status FROM instructor i INNER JOIN classes c ON c.fk_id_instructor = i.ID WHERE c.name = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, selected_class);
             ResultSet rs = stmt.executeQuery();
 
-            ObservableList<Instructor> instructors = FXCollections.observableArrayList();
             while (rs.next()) {
+                int id = rs.getInt("ID");
                 String name = rs.getString("name");
                 String surnames = rs.getString("surnames");
                 String dni = rs.getString("dni");
-                instructors.add(new Instructor(name, surnames, dni));
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                String address = rs.getString("address");
+                String status = rs.getString("status");
+
+                instructors.add(new Instructor(id, name, surnames, dni, password, email, phone, address, status));
             }
 
             instructor_table.setItems(instructors);
-            conn.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    void showStats(ActionEvent event) {}
+    // Métodos vacíos por ahora (según necesidad futura)
+    @FXML void add_instructor(ActionEvent event) {
+    
+    }
+    @FXML void assignInstructors(ActionEvent event) {
+    }
+    @FXML void closeSession(ActionEvent event) {
+    }
+    @FXML void manageAppointments(ActionEvent event) {
+    }
+    @FXML void manageClients(ActionEvent event) {
+    }
+    @FXML void showStats(ActionEvent event) {
+    }
+    @FXML void professional_administration(ActionEvent event) throws IOException {
+        App.setRoot("main_panell");
+    }
 }
