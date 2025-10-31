@@ -6,7 +6,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -61,18 +64,50 @@
          </children></Pane>
       <Rectangle arcHeight="5.0" fill="#ffffffe5" height="1080.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
       <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
-      <TableView fx:id="class_table" layoutX="428.0" layoutY="120.0" prefHeight="887.0" prefWidth="1400.0">
+      <TableView fx:id="class_table" layoutX="428.0" layoutY="120.0" prefHeight="936.0" prefWidth="1400.0">
         <columns>
           <TableColumn fx:id="class_name" editable="false" prefWidth="294.0" text="Nom Classe" />
             <TableColumn fx:id="instructor" editable="false" prefWidth="216.0" text="Instructor" />
             <TableColumn fx:id="capacity" editable="false" prefWidth="279.0" text="Aforament" />
             <TableColumn fx:id="start_time" editable="false" prefWidth="182.0" text="Inici" />
             <TableColumn fx:id="end_time" editable="false" prefWidth="191.0" text="Final" />
-            <TableColumn fx:id="edit" editable="false" prefWidth="120.0" text="Edit" />
-            <TableColumn fx:id="delete" editable="false" prefWidth="117.0" text="Eliminar" />
+            <TableColumn fx:id="edit" editable="false" prefWidth="237.0" text="Edit" />
         </columns>
       </TableView>
       <ComboBox fx:id="day" layoutX="428.0" layoutY="47.0" onAction="#updateTable" prefHeight="26.0" prefWidth="213.0" />
       <Button fx:id="addClass" layoutX="1545.0" layoutY="47.0" mnemonicParsing="false" onAction="#addClass" prefHeight="26.0" prefWidth="283.0" text="Afegir Classe" />
+      <Button fx:id="deleteClass" layoutX="1242.0" layoutY="47.0" mnemonicParsing="false" onAction="#deleteClass" prefHeight="26.0" prefWidth="283.0" text="Eliminar" />
+      <GridPane layoutX="1836.0" layoutY="190.0" prefHeight="754.0" prefWidth="0.0" style="-fx-background-color: gray;">
+        <columnConstraints>
+          <ColumnConstraints fx:id="hours" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fx:id="dilluns" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fx:id="dimarts" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fx:id="dimecres" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fx:id="dijous" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fx:id="divendres" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fx:id="dissabte" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
    </children>
 </AnchorPane>

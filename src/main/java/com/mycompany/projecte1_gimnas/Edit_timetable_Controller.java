@@ -14,9 +14,11 @@ import javafx.collections.ObservableList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,7 +30,6 @@ public class Edit_timetable_Controller {
     @FXML
     public void initialize() throws ClassNotFoundException {
         ObservableList<String> days = FXCollections.observableArrayList("dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte");
-
         day.setItems(days);
         
         Connection conn = DatabaseConnection.getConnection();
@@ -120,9 +121,6 @@ public class Edit_timetable_Controller {
     private TableColumn<Clase, String> start_time;
 
     @FXML
-    private TableColumn<?, ?> delete;
-
-    @FXML
     private TableColumn<?, ?> edit;
     
     @FXML
@@ -134,6 +132,8 @@ public class Edit_timetable_Controller {
     @FXML
     private Text role;
     
+
+    
     @FXML
     void addClass(ActionEvent event) throws IOException {
         App.setRoot("editTimetable-addClass");
@@ -142,7 +142,6 @@ public class Edit_timetable_Controller {
     @FXML 
     void updateTable(ActionEvent event) throws ClassNotFoundException{
         String selected_day = day.getValue();
-        System.out.println(selected_day);
         
         Connection conn = DatabaseConnection.getConnection();
         
@@ -186,6 +185,92 @@ public class Edit_timetable_Controller {
             e.printStackTrace();
         }
 
+    }
+    
+    @FXML
+    void deleteClass(ActionEvent event) throws ClassNotFoundException {
+        Clase selectedClass=class_table.getSelectionModel().getSelectedItem();
+        if(selectedClass!=null){
+            System.out.println(selectedClass.getClass_name());
+            
+            Connection conn = DatabaseConnection.getConnection();
+        
+            if (conn == null) {
+                System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+            }
+
+            try {
+
+                Statement statement = conn.createStatement();
+
+                try {
+                    String sql="DELETE FROM classes WHERE name= ? AND date=? AND start_time=?";
+                    PreparedStatement stmt=conn.prepareStatement(sql);
+                    stmt.setString(1,selectedClass.getClass_name());
+                    stmt.setString(2,selectedClass.getDate());
+                    stmt.setString(3,selectedClass.getStart_time());
+
+                    stmt.executeUpdate();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                conn.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        Connection conn = DatabaseConnection.getConnection();
+        
+        if (conn == null) {
+            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+        }
+
+        try {
+            ObservableList<Clase> clases = FXCollections.observableArrayList();
+
+            try {                
+                String selected_day = day.getValue();
+                String sql=null;
+                
+                                
+                if(selected_day==null){
+                    Alert a = new Alert(Alert.AlertType.ERROR);
+                    a.setContentText("Selecciona un dia, aixo es provisional");
+                    a.show();
+                }
+                else{
+                    sql="SELECT * FROM classes WHERE date=?";
+                    PreparedStatement stmt=conn.prepareStatement(sql);
+                    stmt.setString(1, selected_day);
+                    
+                    ResultSet rs = stmt.executeQuery();
+
+                    while (rs.next()) {
+                        String name = rs.getString("name");
+                        int instructorT = rs.getInt("fk_id_instructor");
+                        int capacityT = rs.getInt("capacity");
+                        String date = rs.getString("date");
+                        String startT = rs.getString("start_time");
+                        String endT = rs.getString("end_time");
+
+                        clases.add(new Clase(name, instructorT, capacityT, date, startT, endT));
+                    }
+                    class_table.setItems(clases);
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     @FXML

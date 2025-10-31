@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -56,9 +57,6 @@ public class Edit_timetable_add_class_Controller {
             e.printStackTrace();
         }
         instructor.setItems(instructors);
-        
-        ObservableList<Integer> capacitys = FXCollections.observableArrayList(16,20,32);
-        capacity.setItems(capacitys);
     }
         
     @FXML
@@ -67,9 +65,6 @@ public class Edit_timetable_add_class_Controller {
     @FXML
     private Button assignInstructorsBtn;
 
-    @FXML
-    private ComboBox<Integer> capacity;
-    
     @FXML
     private Button closeSessionBtn;
 
@@ -106,6 +101,9 @@ public class Edit_timetable_add_class_Controller {
     @FXML
     private Text username;
 
+    @FXML
+    private Slider capacitySlider;
+    
     @FXML
     void addClass(ActionEvent event) throws IOException, ClassNotFoundException {
         boolean flag=false;
@@ -156,7 +154,7 @@ public class Edit_timetable_add_class_Controller {
             final_hour=final_hour+selected_hour.substring(2);
 
             int selected_instructor=instructor.getValue();
-            int selectedCapacity=capacity.getValue();
+            int selectedCapacity=(int) capacitySlider.getValue();
 
         // Insert de classes a la taula d'horaris
         
@@ -185,7 +183,6 @@ public class Edit_timetable_add_class_Controller {
             }
             App.setRoot("editTimetable");
         }
-        
     }
 
     @FXML
