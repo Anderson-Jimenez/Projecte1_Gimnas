@@ -65,7 +65,6 @@
       <ComboBox fx:id="day" layoutX="851.0" layoutY="470.0" onAction="#daySelect" prefHeight="26.0" prefWidth="511.0" promptText="Dia" />
       <ComboBox fx:id="hour" layoutX="851.0" layoutY="516.0" onAction="#hourSelect" prefHeight="26.0" prefWidth="511.0" promptText="Hora " />
       <Button fx:id="addClass" layoutX="1062.0" layoutY="675.0" mnemonicParsing="false" onAction="#addClass" text="Afegir Clase" />
-      <ComboBox fx:id="capacity" layoutX="851.0" layoutY="562.0" onAction="#capacitySelect" prefHeight="26.0" prefWidth="511.0" promptText="Capacitat" />
       <Slider fx:id="capacitySlider" layoutX="850.0" layoutY="607.0" majorTickUnit="1.0" max="30.0" min="6.0" minorTickCount="0" prefHeight="16.0" prefWidth="511.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="30.0" />
    </children>
 </AnchorPane>

@@ -1,14 +1,11 @@
 package com.mycompany.projecte1_gimnas;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,8 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,11 +22,10 @@ import javafx.scene.text.Text;
 
 public class Edit_timetable_Controller {
 
+    private String day;
+    
     @FXML
-    public void initialize() throws ClassNotFoundException {
-        ObservableList<String> days = FXCollections.observableArrayList("dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte");
-        day.setItems(days);
-        
+    public void initialize() throws ClassNotFoundException {            
         Connection conn = DatabaseConnection.getConnection();
         
         if (conn == null) {
@@ -75,12 +69,8 @@ public class Edit_timetable_Controller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
-    @FXML
-    private ComboBox<String> day;
-
+    
     @FXML
     private Button assignInstructorsBtn;
 
@@ -127,66 +117,96 @@ public class Edit_timetable_Controller {
     private Button addClass;
     
     @FXML
+    private Button deleteClass;
+    
+    @FXML
     private Text username;
     
     @FXML
     private Text role;
-    
+       
+    @FXML
+    private Button addDilluns;
 
+    @FXML
+    private Button addDimarts;
+
+    @FXML
+    private Button addDimecres;
     
+    @FXML
+    private Button addDijous;
+
+    @FXML
+    private Button addDivendres;
+    
+    @FXML
+    private Button addDissabte;
+
+    @FXML
+    private Button back;
+    
+    @FXML
+    void back(ActionEvent event) {
+        back.getStyleClass().add("hidden");
+        class_table.getStyleClass().add("hidden");
+        addClass.getStyleClass().add("hidden");
+        deleteClass.getStyleClass().add("hidden");
+        addDilluns.getStyleClass().remove("hidden");
+        addDimarts.getStyleClass().remove("hidden");
+        addDimecres.getStyleClass().remove("hidden");
+        addDijous.getStyleClass().remove("hidden");
+        addDivendres.getStyleClass().remove("hidden");
+        addDissabte.getStyleClass().remove("hidden");
+    }
+    
+    @FXML
+    void addDilluns(ActionEvent event) throws ClassNotFoundException {
+        day="dilluns";
+        changeEditTimetableStyle();
+        updateTable(day);
+    }
+    
+    @FXML
+    void addDimarts(ActionEvent event) throws ClassNotFoundException {
+        day="dimarts";
+        changeEditTimetableStyle();
+        updateTable(day);
+    }
+
+    @FXML
+    void addDimecres(ActionEvent event) throws ClassNotFoundException {
+        day="dimecres";
+        changeEditTimetableStyle();
+        updateTable(day);
+    }
+    
+    @FXML
+    void addDijous(ActionEvent event) throws ClassNotFoundException {
+        day="dijous";
+        changeEditTimetableStyle();
+        updateTable(day);
+    }
+    
+    @FXML
+    void addDivendres(ActionEvent event) throws ClassNotFoundException {
+        day="divendres";
+        changeEditTimetableStyle();
+        updateTable(day);
+    }
+
+    @FXML
+    void addDissabte(ActionEvent event) throws ClassNotFoundException {
+        day="dissabte";
+        changeEditTimetableStyle();
+        updateTable(day);
+    }
+      
     @FXML
     void addClass(ActionEvent event) throws IOException {
         App.setRoot("editTimetable-addClass");
     }
-    
-    @FXML 
-    void updateTable(ActionEvent event) throws ClassNotFoundException{
-        String selected_day = day.getValue();
-        
-        Connection conn = DatabaseConnection.getConnection();
-        
-        if (conn == null) {
-            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
-        }
 
-        try {
-
-            Statement statement = conn.createStatement();
-
-            ObservableList<Clase> clases = FXCollections.observableArrayList();
-
-            try {
-                String sql="SELECT * FROM classes WHERE date= ?";
-                PreparedStatement stmt=conn.prepareStatement(sql);
-                stmt.setString(1,selected_day);
-                
-                ResultSet rs = stmt.executeQuery();
-
-                while (rs.next()) {
-                    String name = rs.getString("name");
-                    String instructor_query="SELECT name FROM instructor INNER JOIN classes ON instructor.ID = ?";
-                    int instructorT = rs.getInt("fk_id_instructor");
-                    int capacityT = rs.getInt("capacity");
-                    String date = rs.getString("date");
-                    String startT = rs.getString("start_time");
-                    String endT = rs.getString("end_time");
-
-                    clases.add(new Clase(name, instructorT, capacityT, date, startT, endT));
-                }
-                class_table.setItems(clases);
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            conn.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-    
     @FXML
     void deleteClass(ActionEvent event) throws ClassNotFoundException {
         Clase selectedClass=class_table.getSelectionModel().getSelectedItem();
@@ -233,7 +253,7 @@ public class Edit_timetable_Controller {
             ObservableList<Clase> clases = FXCollections.observableArrayList();
 
             try {                
-                String selected_day = day.getValue();
+                String selected_day = day;
                 String sql=null;
                 
                                 
@@ -303,5 +323,66 @@ public class Edit_timetable_Controller {
     void showStats(ActionEvent event) {
 
     }
+    
+    /*======================================Funcions====================================*/
 
+    public void changeEditTimetableStyle(){
+        back.getStyleClass().remove("hidden");
+        class_table.getStyleClass().remove("hidden");
+        addClass.getStyleClass().remove("hidden");
+        deleteClass.getStyleClass().remove("hidden");
+        addDilluns.getStyleClass().add("hidden");
+        addDimarts.getStyleClass().add("hidden");
+        addDimecres.getStyleClass().add("hidden");
+        addDijous.getStyleClass().add("hidden");
+        addDivendres.getStyleClass().add("hidden");
+        addDissabte.getStyleClass().add("hidden");
+    }
+    
+    private void updateTable(String day) throws ClassNotFoundException{
+        String selected_day = day;
+        
+        Connection conn = DatabaseConnection.getConnection();
+        
+        if (conn == null) {
+            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+        }
+
+        try {
+
+            Statement statement = conn.createStatement();
+
+            ObservableList<Clase> clases = FXCollections.observableArrayList();
+
+            try {
+                String sql="SELECT * FROM classes WHERE date= ?";
+                PreparedStatement stmt=conn.prepareStatement(sql);
+                stmt.setString(1,selected_day);
+                
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String name = rs.getString("name");
+                    String instructor_query="SELECT name FROM instructor INNER JOIN classes ON instructor.ID = ?";
+                    int instructorT = rs.getInt("fk_id_instructor");
+                    int capacityT = rs.getInt("capacity");
+                    String date = rs.getString("date");
+                    String startT = rs.getString("start_time");
+                    String endT = rs.getString("end_time");
+
+                    clases.add(new Clase(name, instructorT, capacityT, date, startT, endT));
+                }
+                class_table.setItems(clases);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

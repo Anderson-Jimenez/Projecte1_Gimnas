@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -107,10 +109,9 @@ public class Edit_timetable_add_class_Controller {
     @FXML
     void addClass(ActionEvent event) throws IOException, ClassNotFoundException {
         boolean flag=false;
-        
         String selected_day=day.getValue();
         String selected_hour=hour.getValue();
-        
+            
         Connection conn1 = DatabaseConnection.getConnection();
         
         if (conn1 == null) {
@@ -145,16 +146,16 @@ public class Edit_timetable_add_class_Controller {
         }
         else{
             String selected_class=typeClass.getValue();
+                        
+            List<String> list= Arrays.asList("06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00","24:00");
             
-            String end_hour=selected_hour.substring(0, 2);
-            int end_hour_int= Integer.parseInt(end_hour);
+            int end_hour_int=list.indexOf(selected_hour);
             end_hour_int=end_hour_int+1;
-
-            String final_hour= String.valueOf(end_hour_int);
-            final_hour=final_hour+selected_hour.substring(2);
+            String end_hour=list.get(end_hour_int);
 
             int selected_instructor=instructor.getValue();
             int selectedCapacity=(int) capacitySlider.getValue();
+            
 
         // Insert de classes a la taula d'horaris
         
@@ -170,7 +171,7 @@ public class Edit_timetable_add_class_Controller {
                     stmt.setString(1,selected_class);
                     stmt.setString(2,selected_day);
                     stmt.setString(3,selected_hour);
-                    stmt.setString(4,final_hour);
+                    stmt.setString(4,end_hour);
                     stmt.setInt(5, selectedCapacity);
                     stmt.setInt(6, selected_instructor);
 
