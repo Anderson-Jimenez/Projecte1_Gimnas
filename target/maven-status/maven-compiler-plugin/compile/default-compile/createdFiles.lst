@@ -5,10 +5,7 @@ com/mycompany/projecte1_gimnas/Clase.class
 com/mycompany/projecte1_gimnas/App.class
 com/mycompany/projecte1_gimnas/LoginController.class
 com/mycompany/projecte1_gimnas/DatabaseConnection.class
-<<<<<<< HEAD
 com/mycompany/projecte1_gimnas/Edit_InstructorController.class
-=======
->>>>>>> 356efaf0f27b2d27246e0354173f5511a59426e4
 com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.class
 com/mycompany/projecte1_gimnas/model/Instructor.class
 com/mycompany/projecte1_gimnas/Main_panell_Controller.class
