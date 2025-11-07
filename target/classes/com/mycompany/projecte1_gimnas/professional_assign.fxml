@@ -29,22 +29,22 @@
                </font>
             </Text>
             <Separator layoutX="48.0" layoutY="101.0" prefHeight="1.0" prefWidth="276.0" />
-            <Button fx:id="assignInstructorsBtn" layoutX="48.0" layoutY="142.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
+            <Button fx:id="assignInstructorsBtn" layoutX="48.0" layoutY="127.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" text="Gestionar Clients">
+            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="303.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" text="Gestionar Clients">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="398.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
+            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="496.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -54,7 +54,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="adm_professionals" layoutX="21.0" layoutY="236.0" mnemonicParsing="false" onAction="#professional_administration" prefHeight="69.0" prefWidth="330.0" styleClass="redBg" text="Administrar Instructors">
+            <Button fx:id="adm_professionals" layoutX="21.0" layoutY="221.0" mnemonicParsing="false" onAction="#professional_administration" prefHeight="69.0" prefWidth="330.0" styleClass="redBg" text="Administrar Instructors">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.Edit_Instructor">
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.Edit_InstructorController">
    <children>
       <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
          <children>
@@ -59,29 +60,31 @@
                </font>
             </Button>
          </children></Pane>
-      <Rectangle arcHeight="5.0" fill="#ffffff80" height="797.0" layoutX="811.0" layoutY="170.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="674.0" />
+      <Rectangle arcHeight="5.0" fill="#ffffffcb" height="671.0" layoutX="800.0" layoutY="196.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="674.0" />
       <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
       <ComboBox fx:id="class_name" layoutX="428.0" layoutY="44.0" onAction="#show_instructors" prefHeight="39.0" prefWidth="221.0" />
-      <Button fx:id="update_instructor_btn" layoutX="1056.0" layoutY="859.0" mnemonicParsing="false" onAction="#update_instructor" text="Actualitza Dades Instructor" />
-      <TextField layoutX="892.0" layoutY="330.0" prefHeight="39.0" prefWidth="511.0" />
-      <TextField layoutX="891.0" layoutY="401.0" prefHeight="39.0" prefWidth="511.0" />
-      <Text layoutX="892.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-      <Text layoutX="892.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" />
-      <TextField layoutX="891.0" layoutY="479.0" prefHeight="39.0" prefWidth="511.0" />
-      <Text layoutX="892.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
-      <TextField layoutX="891.0" layoutY="558.0" prefHeight="39.0" prefWidth="511.0" />
-      <Text layoutX="892.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextField layoutX="892.0" layoutY="626.0" prefHeight="39.0" prefWidth="511.0" />
-      <Text layoutX="894.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de telèfon" wrappingWidth="124.80400085449219" />
-      <TextField layoutX="891.0" layoutY="712.0" prefHeight="39.0" prefWidth="511.0" />
-      <Text layoutX="893.0" layoutY="708.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adreça" wrappingWidth="124.80400085449219" />
-      <ComboBox fx:id="status_selector" layoutX="892.0" layoutY="783.0" onAction="#status_ins_selector" prefHeight="39.0" prefWidth="511.0" />
-      <Text layoutX="893.0" layoutY="779.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estat Actual" wrappingWidth="124.80400085449219" />
-      <Text layoutX="1000.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualitzar Dades">
+      <Button fx:id="update_instructor_btn" layoutX="1045.0" layoutY="704.0" mnemonicParsing="false" onAction="#update_instructor" prefHeight="58.0" prefWidth="184.0" text="Actualitza Dades Instructor">
+         <styleClass>
+            <String fx:value="redBg" />
+            <String fx:value="btn" />
+         </styleClass></Button>
+      <Text fx:id="fullnameLabel" fill="#fe5d5d" layoutX="1039.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Complet">
          <font>
-            <Font size="36.0" />
+            <Font name="Noto Sans Arabic Regular" size="24.0" />
+         </font></Text>
+      <TextField fx:id="emailLabel" layoutX="882.0" layoutY="399.0" prefHeight="39.0" prefWidth="511.0" />
+      <Text fill="#fe5d5d" layoutX="883.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <TextField fx:id="phoneNumberLabel" layoutX="882.0" layoutY="473.0" prefHeight="39.0" prefWidth="511.0" />
+      <Text fill="#fe5d5d" layoutX="885.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de telèfon" wrappingWidth="124.80400085449219" />
+      <TextField fx:id="addressLabel" layoutX="882.0" layoutY="549.0" prefHeight="39.0" prefWidth="511.0" />
+      <Text fill="#fe5d5d" layoutX="884.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adreça" wrappingWidth="124.80400085449219" />
+      <Text fill="#fe5d5d" layoutX="989.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualitzar Dades">
+         <font>
+            <Font name="Noto Sans Regular" size="36.0" />
          </font>
       </Text>
+      <TextField fx:id="passwdLabel" layoutX="882.0" layoutY="634.0" prefHeight="39.0" prefWidth="511.0" />
+      <Text fill="#fe5d5d" layoutX="883.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
    </children>
    <stylesheets>
       <URL value="@style.css" />

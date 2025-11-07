@@ -11,6 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -19,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Professional_assignController {
 
@@ -157,13 +162,6 @@ public class Professional_assignController {
                     
                 }
                 
-                
-                
-                
-                
-                
-
-
                 // Actualizar tabla
                 cargarInstructores();
 
@@ -185,7 +183,24 @@ public class Professional_assignController {
 
         if (ins != null) {
             System.out.println("📝 Editar instructor: " + ins.getName());
-            App.setRoot("edit_instructor");
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("edit_instructor.fxml"));
+            Parent root = loader.load();
+            
+            //Es demana el controlador de la vista que volem obrir per editar dades
+            Edit_InstructorController ctrl = loader.getController();
+            //Es pasen les dades de l'instructor al nou controlador
+            ctrl.initData(ins);
+            
+            //Canviar l'escena
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Instructor");
+            stage.show();
+            
+            
+            
+            
         } else {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setContentText("Selecciona l'instructor que vols editar");
@@ -236,10 +251,12 @@ public class Professional_assignController {
     }
 
     // Métodos vacíos por ahora (según necesidad futura)
-    @FXML void add_instructor(ActionEvent event) {
-    
+    @FXML void add_instructor(ActionEvent event) throws IOException {
+        App.setRoot("main_panell");
+
     }
     @FXML void assignInstructors(ActionEvent event) {
+        
     }
     @FXML void closeSession(ActionEvent event) {
     }
