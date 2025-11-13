@@ -73,8 +73,8 @@
             <TableColumn fx:id="edit" editable="false" prefWidth="237.0" text="Edit" />
         </columns>
       </TableView>
-      <Button fx:id="addClass" layoutX="1545.0" layoutY="47.0" mnemonicParsing="false" onAction="#addClass" prefHeight="26.0" prefWidth="283.0" styleClass="hidden" text="Afegir Classe" />
-      <Button fx:id="deleteClass" layoutX="1242.0" layoutY="47.0" mnemonicParsing="false" onAction="#deleteClass" prefHeight="26.0" prefWidth="283.0" styleClass="hidden" text="Eliminar" />
+      <Button fx:id="addClass" layoutX="1648.0" layoutY="47.0" mnemonicParsing="false" onAction="#addClass" prefHeight="26.0" prefWidth="180.0" styleClass="hidden" text="Afegir Classe" />
+      <Button fx:id="deleteClass" layoutX="1456.0" layoutY="47.0" mnemonicParsing="false" onAction="#deleteClass" prefHeight="26.0" prefWidth="180.0" styleClass="hidden" text="Eliminar" />
       <Button fx:id="addDilluns" layoutX="741.0" layoutY="369.0" mnemonicParsing="false" onAction="#addDilluns" prefHeight="48.0" prefWidth="812.0" text="DILLUNS">
          <effect>
             <DropShadow blurType="GAUSSIAN" height="2.75" offsetX="2.0" offsetY="3.0" radius="0.1875" width="0.0">
@@ -137,5 +137,6 @@
             <String fx:value="hidden" />
          </styleClass>
       </Button>
+      <Button fx:id="editClass" layoutX="1266.0" layoutY="47.0" mnemonicParsing="false" onAction="#editClass" prefHeight="26.0" prefWidth="180.0" styleClass="hidden" text="Editar" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +9,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
@@ -19,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Edit_timetable_Controller {
 
@@ -49,6 +54,7 @@ public class Edit_timetable_Controller {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM classes");
 
                 while (rs.next()) {
+                    int id = rs.getInt("id");
                     String name = rs.getString("name");
                     int instructorT = rs.getInt("fk_id_instructor");
                     int capacityT = rs.getInt("capacity");
@@ -56,7 +62,7 @@ public class Edit_timetable_Controller {
                     String startT = rs.getString("start_time");
                     String endT = rs.getString("end_time");
 
-                    clases.add(new Clase(name, instructorT, capacityT, date, startT, endT));
+                    clases.add(new Clase(id, name, instructorT, capacityT, date, startT, endT));
                 }
                 class_table.setItems(clases);
 
@@ -109,9 +115,9 @@ public class Edit_timetable_Controller {
 
     @FXML
     private TableColumn<Clase, String> start_time;
-
+    
     @FXML
-    private TableColumn<?, ?> edit;
+    private Button editClass;
     
     @FXML
     private Button addClass;
@@ -151,6 +157,7 @@ public class Edit_timetable_Controller {
         back.getStyleClass().add("hidden");
         class_table.getStyleClass().add("hidden");
         addClass.getStyleClass().add("hidden");
+        editClass.getStyleClass().add("hidden");
         deleteClass.getStyleClass().add("hidden");
         addDilluns.getStyleClass().remove("hidden");
         addDimarts.getStyleClass().remove("hidden");
@@ -207,6 +214,35 @@ public class Edit_timetable_Controller {
         App.setRoot("editTimetable-addClass");
     }
 
+    @FXML
+    void editClass(ActionEvent event) throws IOException {
+        Clase clase = class_table.getSelectionModel().getSelectedItem();
+
+        if (clase != null) {
+            System.out.println("📝 Editar classe: " + clase.getClass_name());
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("editClass.fxml"));
+            Parent root = loader.load();
+            
+            //Es demana el controlador de la vista que volem obrir per editar dades
+            EditClassController ctrl = loader.getController();
+            //Es pasen les dades de l'instructor al nou controlador
+            ctrl.initData(clase);
+
+            //Canviar l'escena
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Classe");
+            stage.show();
+            
+
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setContentText("Selecciona la classe que vols editar");
+            alerta.show();
+        }
+    }
+    
     @FXML
     void deleteClass(ActionEvent event) throws ClassNotFoundException {
         Clase selectedClass=class_table.getSelectionModel().getSelectedItem();
@@ -270,6 +306,7 @@ public class Edit_timetable_Controller {
                     ResultSet rs = stmt.executeQuery();
 
                     while (rs.next()) {
+                        int id = rs.getInt("id");
                         String name = rs.getString("name");
                         int instructorT = rs.getInt("fk_id_instructor");
                         int capacityT = rs.getInt("capacity");
@@ -277,7 +314,7 @@ public class Edit_timetable_Controller {
                         String startT = rs.getString("start_time");
                         String endT = rs.getString("end_time");
 
-                        clases.add(new Clase(name, instructorT, capacityT, date, startT, endT));
+                        clases.add(new Clase(id, name, instructorT, capacityT, date, startT, endT));
                     }
                     class_table.setItems(clases);
                 }
@@ -308,6 +345,8 @@ public class Edit_timetable_Controller {
         App.setRoot("main_panell");
 
     }
+    
+    
 
     @FXML
     void manageAppointments(ActionEvent event) {
@@ -330,6 +369,7 @@ public class Edit_timetable_Controller {
         back.getStyleClass().remove("hidden");
         class_table.getStyleClass().remove("hidden");
         addClass.getStyleClass().remove("hidden");
+        editClass.getStyleClass().remove("hidden");
         deleteClass.getStyleClass().remove("hidden");
         addDilluns.getStyleClass().add("hidden");
         addDimarts.getStyleClass().add("hidden");
@@ -362,6 +402,7 @@ public class Edit_timetable_Controller {
                 ResultSet rs = stmt.executeQuery();
 
                 while (rs.next()) {
+                    int id = rs.getInt("id");
                     String name = rs.getString("name");
                     String instructor_query="SELECT name FROM instructor INNER JOIN classes ON instructor.ID = ?";
                     int instructorT = rs.getInt("fk_id_instructor");
@@ -370,7 +411,7 @@ public class Edit_timetable_Controller {
                     String startT = rs.getString("start_time");
                     String endT = rs.getString("end_time");
 
-                    clases.add(new Clase(name, instructorT, capacityT, date, startT, endT));
+                    clases.add(new Clase(id, name, instructorT, capacityT, date, startT, endT));
                 }
                 class_table.setItems(clases);
 
