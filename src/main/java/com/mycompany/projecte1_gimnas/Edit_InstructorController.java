@@ -58,7 +58,10 @@ public class Edit_InstructorController {
 
     @FXML
     private TextField phoneNumberLabel;
-
+    
+    @FXML
+    private Button editTimeBtn;
+    
     @FXML
     private Text rol;
 
@@ -71,7 +74,7 @@ public class Edit_InstructorController {
     @FXML
     private Text username;
     
-    private Instructor instructor; // para guardar referencia si la necesitas
+    private Instructor instructor;
 
     public void initData(Instructor instructor) {
         this.instructor = instructor;
@@ -100,7 +103,10 @@ public class Edit_InstructorController {
         App.setRoot("professional_assign");
 
     }
-
+    @FXML
+    void editTimetable(ActionEvent event) throws IOException {
+        App.setRoot("editTimetable");
+    }
     @FXML
     void manageClients(ActionEvent event) throws IOException {
         App.setRoot("professional_assign");

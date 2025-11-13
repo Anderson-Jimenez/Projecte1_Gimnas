@@ -32,6 +32,8 @@ public class Professional_assignController {
     @FXML 
     private Button assignInstructorsBtn;
     @FXML 
+    private Button editTimeBtn;
+    @FXML 
     private ComboBox<String> class_name;
     @FXML 
     private Button closeSessionBtn;
@@ -85,11 +87,8 @@ public class Professional_assignController {
 
         instructor_address.setCellValueFactory(new PropertyValueFactory<>("address"));
         instructor_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-
-
-        // Cargar datos iniciales
         cargarInstructores();
+
     }
 
     private void cargarInstructores() throws ClassNotFoundException {
@@ -251,13 +250,21 @@ public class Professional_assignController {
     }
 
     // Métodos vacíos por ahora (según necesidad futura)
-    @FXML void add_instructor(ActionEvent event) throws IOException {
+    @FXML 
+    void add_instructor(ActionEvent event) throws IOException {
         App.setRoot("main_panell");
 
     }
-    @FXML void assignInstructors(ActionEvent event) {
-        
+    @FXML
+    void editTimetable(ActionEvent event) throws IOException {
+        App.setRoot("editTimetable");
+
     }
+    @FXML
+    void assignInstructors(ActionEvent event) throws IOException {
+        App.setRoot("professional_assign");
+    }
+    
     @FXML void closeSession(ActionEvent event) {
     }
     @FXML void manageAppointments(ActionEvent event) {
@@ -265,8 +272,5 @@ public class Professional_assignController {
     @FXML void manageClients(ActionEvent event) {
     }
     @FXML void showStats(ActionEvent event) {
-    }
-    @FXML void professional_administration(ActionEvent event) throws IOException {
-        App.setRoot("main_panell");
     }
 }

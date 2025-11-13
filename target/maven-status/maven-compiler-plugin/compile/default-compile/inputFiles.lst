@@ -1,11 +1,13 @@
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Main_panell_Controller.java
+/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/DatabaseConnection.java
+/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_Controller.java
+/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Professional_assignController.java
+/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.java
+/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/scrollPane.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/App.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/LoginController.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/model/Instructor.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/ProbaController.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/DatabaseConnection.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_timetable_Controller.java
+/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/User_Management_Controller.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Clase.java
 /home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Edit_InstructorController.java
-/home/daw2/Desktop/Projecte1_Gimnas/src/main/java/com/mycompany/projecte1_gimnas/Professional_assignController.java
