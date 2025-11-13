@@ -211,7 +211,7 @@ public class Edit_timetable_Controller {
       
     @FXML
     void addClass(ActionEvent event) throws IOException {
-        App.setRoot("editTimetable-addClass");
+        fxmlLoader(event, "editTimetable-addClass");
     }
 
     @FXML
@@ -332,7 +332,7 @@ public class Edit_timetable_Controller {
     
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        App.setRoot("professional_assign");
+        fxmlLoader(event, "professional_assign");
     }
 
     @FXML
@@ -342,7 +342,7 @@ public class Edit_timetable_Controller {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        App.setRoot("main_panell");
+        fxmlLoader(event, "main_panell");
 
     }
     
@@ -425,5 +425,15 @@ public class Edit_timetable_Controller {
             e.printStackTrace();
         }
 
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

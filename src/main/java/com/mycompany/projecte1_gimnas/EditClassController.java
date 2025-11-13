@@ -138,7 +138,7 @@ public class EditClassController {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        App.setRoot("editTimetable");
+        fxmlLoader(event,"editTimetable");
     }
 
     @FXML
@@ -243,48 +243,18 @@ public class EditClassController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            App.setRoot("editTimetable");
-        }
-        
-        /*
-        String sql = "UPDATE classes SET name = ?, date = ?, start_time = ?, capacity = ? WHERE id = ?";
-             
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            if (conn == null) {
-                System.out.println("❌No so s'ha pogut connectar a la base de dades");
-            }
-
-            Statement statement = conn.createStatement();
-            PreparedStatement stmt = conn.prepareStatement(sql);
-                                
-            stmt.setString(1, typeClass.getValue());
-            stmt.setString(2, day.getValue());
-            stmt.setString(3, hour.getValue());
-            stmt.setInt(4, (int) capacitySlider.getValue());
-            stmt.setInt(5, classe.getId());
             
-            int rows = stmt.executeUpdate();
-
-            if (rows > 0) {
-                System.out.println("✅ Instructor actualitzat correctament");
-
-                //Volver a la vista principal de instructors
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("editTimetable.fxml"));
-                Parent root = loader.load();
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
-            } else {
-                System.out.println("⚠️ No se ha actualizado ningún registro (¿ID incorrecto?)");
-            }
-            
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+            fxmlLoader(event,"editTimetable");
         }
-        */
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

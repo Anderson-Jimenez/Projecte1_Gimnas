@@ -13,6 +13,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -22,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Edit_timetable_add_class_Controller {
     
@@ -182,13 +187,14 @@ public class Edit_timetable_add_class_Controller {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            App.setRoot("editTimetable");
+            
+            fxmlLoader(event, "editTimetable");
         }
     }
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        App.setRoot("professional_assign");
+        fxmlLoader(event, "professional_assign");
     }
 
     @FXML
@@ -208,7 +214,7 @@ public class Edit_timetable_add_class_Controller {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        App.setRoot("editTimetable");
+        fxmlLoader(event, "editTimetable");
     }
 
     @FXML
@@ -218,7 +224,7 @@ public class Edit_timetable_add_class_Controller {
 
     @FXML
     void instructorSelect(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -239,5 +245,15 @@ public class Edit_timetable_add_class_Controller {
     @FXML
     void typeClassSelect(ActionEvent event) {
 
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
