@@ -56,8 +56,8 @@ public class Main_panell_Controller {
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        App.setRoot("user_management");
     }
 
     @FXML
