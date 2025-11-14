@@ -9,6 +9,7 @@ package com.mycompany.projecte1_gimnas;
  * @author asix1
  */
 public class Clase {
+    private int id;
     private String class_name;
     private int instructor;
     private int aforament;
@@ -16,13 +17,22 @@ public class Clase {
     private String start_time;
     private String end_time;
     
-    public Clase(String class_name, int instructor, int aforament, String date, String start_time, String end_time) {
+    public Clase(int id,String class_name, int instructor, int aforament, String date, String start_time, String end_time) {
+        this.id = id;
         this.class_name = class_name;
         this.instructor = instructor;
         this.aforament = aforament;
         this.date = date;
         this.start_time = start_time;
         this.end_time = end_time;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setClass_name(int id) {
+        this.id = id;
     }
     
     public String getClass_name() {

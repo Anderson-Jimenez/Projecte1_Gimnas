@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.StatsController">
+   <children>
+      <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
+         <children>
+            <Circle layoutX="58.0" layoutY="52.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Text fx:id="username" fill="#797979" layoutX="93.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anderson Stiven Jimenez">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="role" fill="#d7d7d7" layoutX="93.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Separator layoutX="48.0" layoutY="101.0" prefHeight="1.0" prefWidth="276.0" />
+            <Button fx:id="editTimeBtn" layoutX="47.0" layoutY="121.0" mnemonicParsing="false" onAction="#editTimetable" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="assignInstructorsBtn" layoutX="45.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Assignar Instructors">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" text="Gestionar Clients">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" styleClass="redBg" text="Estadistiques">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="990.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Pane layoutX="399.0" layoutY="22.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de clases cada dia+tipus de clase (stacked Bar Chart)" wrappingWidth="436.13000106811523" />
+            <StackedBarChart fx:id="stackedBarChart" layoutX="11.0" layoutY="40.0" prefHeight="424.0" prefWidth="652.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
+         </children>
+      </Pane>
+      <Pane layoutX="1217.0" layoutY="22.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitat d'usuaris que hi han cada dia + les hores mes actives" wrappingWidth="436.13000106811523" />
+         </children>
+      </Pane>
+      <Pane layoutX="399.0" layoutY="579.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="46.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% de clases de cada instructor (pie chart)" wrappingWidth="436.13000106811523" />
+            <PieChart fx:id="pieChart2" layoutX="82.0" layoutY="56.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="1217.0" layoutY="579.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="20.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clases mes reservades" wrappingWidth="436.13000106811523" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

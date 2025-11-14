@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,17 +18,26 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Edit_timetable_add_class_Controller {
+public class EditClassController {
+
+    private Clase classe;
+    
+    public void initData(Clase classe) {
+        this.classe=classe;
+        // Mostrar los datos en los campos
+        typeClass.setValue(classe.getClass_name());
+        instructor.setValue(classe.getInstructor());
+        day.setValue(classe.getDate());
+        hour.setValue(classe.getStart_time());
+        capacitySlider.setValue(classe.getAforament());
+    }
     
     @FXML
     public void initialize() throws ClassNotFoundException {
@@ -65,12 +74,12 @@ public class Edit_timetable_add_class_Controller {
         }
         instructor.setItems(instructors);
     }
-        
-    @FXML
-    private Button addClass;
-
+    
     @FXML
     private Button assignInstructorsBtn;
+
+    @FXML
+    private Slider capacitySlider;
 
     @FXML
     private Button closeSessionBtn;
@@ -106,13 +115,64 @@ public class Edit_timetable_add_class_Controller {
     private ComboBox<String> typeClass;
 
     @FXML
-    private Text username;
+    private Button updateClass;
 
     @FXML
-    private Slider capacitySlider;
+    private Text username;
+
     
     @FXML
-    void addClass(ActionEvent event) throws IOException, ClassNotFoundException {
+    void assignInstructors(ActionEvent event) throws IOException {
+        App.setRoot("professional_assign");
+    }
+
+    @FXML
+    void closeSession(ActionEvent event) {
+
+    }
+
+    @FXML
+    void daySelect(ActionEvent event) {
+
+    }
+
+    @FXML
+    void editTimetable(ActionEvent event) throws IOException {
+        fxmlLoader(event,"editTimetable");
+    }
+
+    @FXML
+    void hourSelect(ActionEvent event) {
+
+    }
+
+    @FXML
+    void instructorSelect(ActionEvent event) {
+
+    }
+
+    @FXML
+    void manageAppointments(ActionEvent event) {
+
+    }
+
+    @FXML
+    void manageClients(ActionEvent event) {
+
+    }
+
+    @FXML
+    void showStats(ActionEvent event) {
+
+    }
+
+    @FXML
+    void typeClassSelect(ActionEvent event) {
+
+    }
+
+    @FXML
+    void updateClass(ActionEvent event) throws ClassNotFoundException, IOException {
         boolean flag=false;
         String selected_day=day.getValue();
         String selected_hour=hour.getValue();
@@ -145,24 +205,18 @@ public class Edit_timetable_add_class_Controller {
         }
         
         if(flag==true){
-            Alert a = new Alert(AlertType.ERROR);
+            Alert a = new Alert(Alert.AlertType.ERROR);
             a.setContentText("Ja existeix una classe en aquesta hora");
             a.show();
         }
-        else{
-            String selected_class=typeClass.getValue();
-                        
+        else{            
             List<String> list= Arrays.asList("06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00","24:00");
             
             int end_hour_int=list.indexOf(selected_hour);
             end_hour_int=end_hour_int+1;
-            String end_hour=list.get(end_hour_int);
+            String end_hour=list.get(end_hour_int);        
 
-            int selected_instructor=instructor.getValue();
-            int selectedCapacity=(int) capacitySlider.getValue();
-            
-
-        // Insert de classes a la taula d'horaris
+            // Insert de classes a la taula d'horaris
         
             Connection conn2 = DatabaseConnection.getConnection();
         
@@ -171,82 +225,29 @@ public class Edit_timetable_add_class_Controller {
             }
 
             try {
-                    String sql="INSERT INTO classes (name, date, start_time, end_time, capacity, fk_id_instructor) VALUES (?, ?, ?, ?, ?, ?)";
-                    PreparedStatement stmt=conn2.prepareStatement(sql);
-                    stmt.setString(1,selected_class);
-                    stmt.setString(2,selected_day);
-                    stmt.setString(3,selected_hour);
-                    stmt.setString(4,end_hour);
-                    stmt.setInt(5, selectedCapacity);
-                    stmt.setInt(6, selected_instructor);
+                String sql = "UPDATE classes SET name = ?, date = ?, start_time = ?, end_time = ?, capacity = ? WHERE id = ?";
+                
+                Statement statement = conn2.createStatement();
+                PreparedStatement stmt = conn2.prepareStatement(sql);
+            
+                stmt.setString(1, typeClass.getValue());
+                stmt.setString(2, day.getValue());
+                stmt.setString(3, hour.getValue());
+                stmt.setString(4, end_hour);
+                stmt.setInt(5, (int) capacitySlider.getValue());
+                stmt.setInt(6, classe.getId());
 
-                    stmt.executeUpdate();
-
+                int rows = stmt.executeUpdate();
                 conn2.close();
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             
-            fxmlLoader(event, "editTimetable");
+            fxmlLoader(event,"editTimetable");
         }
     }
 
-    @FXML
-    void assignInstructors(ActionEvent event) throws IOException {
-        fxmlLoader(event, "professional_assign");
-    }
-
-    @FXML
-    void capacitySelect(ActionEvent event) {
-
-    }
-
-    @FXML
-    void closeSession(ActionEvent event) {
-
-    }
-
-    @FXML
-    void daySelect(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editTimetable(ActionEvent event) throws IOException {
-        fxmlLoader(event, "editTimetable");
-    }
-
-    @FXML
-    void hourSelect(ActionEvent event) {
-
-    }
-
-    @FXML
-    void instructorSelect(ActionEvent event) {
-        
-    }
-
-    @FXML
-    void manageAppointments(ActionEvent event) {
-
-    }
-
-    @FXML
-    void manageClients(ActionEvent event) {
-
-    }
-
-    @FXML
-    void showStats(ActionEvent event) {
-
-    }
-
-    @FXML
-    void typeClassSelect(ActionEvent event) {
-
-    }
-    
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
