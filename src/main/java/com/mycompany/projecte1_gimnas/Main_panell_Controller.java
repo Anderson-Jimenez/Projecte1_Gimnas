@@ -66,8 +66,8 @@ public class Main_panell_Controller {
     }
 
     @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        fxmlLoader(event, "estadistiques");
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -359,8 +359,8 @@ public class Edit_timetable_Controller {
     }
 
     @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        fxmlLoader(event, "estadistiques");
     }
     
     /*======================================Funcions====================================*/

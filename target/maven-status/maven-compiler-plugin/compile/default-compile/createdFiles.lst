@@ -9,4 +9,5 @@ com/mycompany/projecte1_gimnas/Edit_InstructorController.class
 com/mycompany/projecte1_gimnas/EditClassController.class
 com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.class
 com/mycompany/projecte1_gimnas/model/Instructor.class
+com/mycompany/projecte1_gimnas/StatsController.class
 com/mycompany/projecte1_gimnas/Main_panell_Controller.class
