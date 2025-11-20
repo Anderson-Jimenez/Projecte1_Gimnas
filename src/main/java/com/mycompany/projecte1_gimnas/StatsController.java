@@ -64,43 +64,14 @@ public class StatsController{
     private Text username;
 
     @FXML
-    private StackedBarChart<String, Number> stackedBarChart;
-
-       
-    /*
-    public void generatePieChart(){
-        Connection conn = DatabaseConnection.getConnection();
-        
-        if (conn == null) {
-            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
-        }
-        try {
-
-            Statement stmt1 = conn.createStatement();
-            ResultSet rs1 = stmt1.executeQuery("SELECT * FROM instructor");
-            
-            while (rs.next()) {
-                int instructorT = rs.getInt("ID");   
-                instructors.add(instructorT);
-            }
-                            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        conn.close();
-    }
-    */
+    private StackedBarChart<String, Number> stackedBarChart;   
     
     @FXML
     public void initialize() throws ClassNotFoundException, SQLException {
 
-        ObservableList<PieChart.Data> pieChartData =
-            FXCollections.observableArrayList(
-                new PieChart.Data("Ignasi", 30),
-                new PieChart.Data("Anderson", 70)
-            );
-        
-        pieChart2.getData().addAll(pieChartData);
+        generatePieChart();
+                 
+        ///////////////////////////////////////////////////////////////////////////////////////////////
         
         XYChart.Series s1 = new XYChart.Series<>();
         s1.setName("Spinning");
@@ -252,5 +223,33 @@ public class StatsController{
         s.getData().add(new XYChart.Data<>("Dijous", Dijous));
         s.getData().add(new XYChart.Data<>("Divendres", Divendres));
         s.getData().add(new XYChart.Data<>("Dissabte", Dissabte));
+    }
+    
+    public void generatePieChart() throws ClassNotFoundException, SQLException{
+        
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+            
+        Connection conn = DatabaseConnection.getConnection();
+                
+        if (conn == null) {
+            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+        }
+        try {
+
+            Statement stmt1 = conn.createStatement();
+            ResultSet rs = stmt1.executeQuery("SELECT CONCAT(i.name, ' ', i.surnames) AS instructor, COUNT(c.ID) AS num_classes FROM instructor i LEFT JOIN classes c ON i.ID = c.fk_id_instructor GROUP BY i.ID, instructor;");
+            
+            while (rs.next()) {
+                String instructor = rs.getString("instructor");
+                int count = rs.getInt("num_classes");
+                pieChartData.add(new  PieChart.Data(instructor, count));
+            }
+                            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        pieChart2.setData(pieChartData);
+
+        conn.close();
     }
 }
