@@ -61,8 +61,8 @@ public class Main_panell_Controller {
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        App.setRoot("user_management");
     }
 
     @FXML
@@ -70,8 +70,6 @@ public class Main_panell_Controller {
         fxmlLoader(event, "estadistiques");
     }
     
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
     public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
         Parent root = loader.load();

@@ -29,7 +29,7 @@
                </font>
             </Text>
             <Separator layoutX="48.0" layoutY="101.0" prefHeight="1.0" prefWidth="276.0" />
-            <Button fx:id="assignInstructorsBtn" layoutX="48.0" layoutY="127.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
+            <Button fx:id="editTimeBtn" layoutX="48.0" layoutY="127.0" mnemonicParsing="false" onAction="#editTimetable" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -54,7 +54,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="adm_professionals" layoutX="21.0" layoutY="221.0" mnemonicParsing="false" onAction="#professional_administration" prefHeight="69.0" prefWidth="330.0" styleClass="redBg" text="Administrar Instructors">
+            <Button fx:id="assignInstructorsBtn" layoutX="21.0" layoutY="221.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="330.0" styleClass="redBg" text="Administrar Instructors">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
