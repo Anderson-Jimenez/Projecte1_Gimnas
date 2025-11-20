@@ -55,16 +55,17 @@ public class UserCard extends HBox {
         statusLabel.setPadding(new Insets(4, 10, 4, 10));
         statusLabel.setStyle("-fx-background-radius: 8; -fx-text-fill: white;");
 
-        if (user.getStatus().equalsIgnoreCase("active"))
-            statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #4CAF50;");
-        else
+        if (user.getStatus().equalsIgnoreCase("active")){
+            statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #4CAF50;"); //si el status es actiu, posa un color de fons, si es inactiu, posa un altre
+        }
+        else{
             statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #b71c1c;");
-
+        }
         VBox vbox = new VBox(5, fullName, statusLabel);
 
         getChildren().addAll(avatar, vbox);
 
-        // Opcional: efecto hover
+        // Efecte hover al passar el mouse per cada tarjeta
         setOnMouseEntered(e -> setStyle(
                 "-fx-background-color: #f6f6f6; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d3d3d3;"
         ));

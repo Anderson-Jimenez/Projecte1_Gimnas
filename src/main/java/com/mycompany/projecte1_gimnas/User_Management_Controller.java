@@ -2,6 +2,9 @@ package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.User;
 import com.mycompany.projecte1_gimnas.model.UserCard;
+import com.mycompany.projecte1_gimnas.model.AppUtils;
+import java.io.IOException;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -61,13 +64,13 @@ public class User_Management_Controller {
     private Text username;
     
     @FXML
-    void addUser(ActionEvent event) {
-        
+    void addUser(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "add_user");
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) {
-
+    void assignInstructors(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"professional_assign");
     }
 
     @FXML
@@ -76,8 +79,8 @@ public class User_Management_Controller {
     }
 
     @FXML
-    void editTimetable(ActionEvent event) {
-
+    void editTimetable(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "editTimetable");
     }
 
     @FXML
@@ -91,13 +94,13 @@ public class User_Management_Controller {
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_management");
     }
 
     @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "estadistiques");
     }
 
        
@@ -107,13 +110,14 @@ public class User_Management_Controller {
     
     public void loadUserCards() throws ClassNotFoundException {
         
-        VBox container = new VBox(15);
-        container.setPadding(new Insets(20));
+        VBox container = new VBox(15); 
+        container.setPadding(new Insets(20)); //donar padding a cada tarjeta
 
-        List<User> users = getUsersFromDatabase();
+        List<User> users = getUsersFromDatabase(); //importa els usuaris de la base de dades
 
         for (User user : users) {
-            container.getChildren().add(new UserCard(user));
+            //if (user.getStatus().equalsIgnoreCase("ACTIVE"))
+            container.getChildren().add(new UserCard(user)); //afegeix al contenidor d'usuaris una tarjeta nova amb les dades de cada usuari
         }
 
         usersScroll.setContent(container);
