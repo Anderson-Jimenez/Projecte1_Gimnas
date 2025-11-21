@@ -153,18 +153,51 @@ public class Edit_timetable_Controller {
     private Button back;
     
     @FXML
+    private Button checkInfo;
+    
+    @FXML
     void back(ActionEvent event) {
         back.getStyleClass().add("hidden");
         class_table.getStyleClass().add("hidden");
         addClass.getStyleClass().add("hidden");
         editClass.getStyleClass().add("hidden");
         deleteClass.getStyleClass().add("hidden");
+        checkInfo.getStyleClass().add("hidden");
         addDilluns.getStyleClass().remove("hidden");
         addDimarts.getStyleClass().remove("hidden");
         addDimecres.getStyleClass().remove("hidden");
         addDijous.getStyleClass().remove("hidden");
         addDivendres.getStyleClass().remove("hidden");
         addDissabte.getStyleClass().remove("hidden");
+    }
+    
+    @FXML
+    void checkInfo(ActionEvent event) throws IOException {
+        Clase clase = class_table.getSelectionModel().getSelectedItem();
+
+        if (clase != null) {
+            System.out.println("📝 Editar classe: " + clase.getClass_name());
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("checkInfo.fxml"));
+            Parent root = loader.load();
+            
+            //Es demana el controlador de la vista que volem obrir per editar dades
+            classInfoController ctrl = loader.getController();
+            //Es pasen les dades de l'instructor al nou controlador
+            ctrl.initData(clase);
+
+            //Canviar l'escena
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Instructor");
+            stage.show();
+            
+
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setContentText("Selecciona la classe que vols editar");
+            alerta.show();
+        }
     }
     
     @FXML
@@ -371,6 +404,7 @@ public class Edit_timetable_Controller {
         addClass.getStyleClass().remove("hidden");
         editClass.getStyleClass().remove("hidden");
         deleteClass.getStyleClass().remove("hidden");
+        checkInfo.getStyleClass().remove("hidden");
         addDilluns.getStyleClass().add("hidden");
         addDimarts.getStyleClass().add("hidden");
         addDimecres.getStyleClass().add("hidden");
