@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class AppUtils {
@@ -20,6 +21,8 @@ public class AppUtils {
     
     // Puedes agregar más métodos utilitarios aquí
     public static void showError(String mensaje) {
-        // Implementación para mostrar diálogos de error
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setContentText(mensaje);
+        alerta.show();
     }
 }

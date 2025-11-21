@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.User_AddController">
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.Edit_UserController">
    <children>
       <Rectangle fill="#ff7676" height="773.0" layoutX="837.0" layoutY="162.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
       <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
@@ -63,7 +63,7 @@
             </Button>
          </children></Pane>
       <Rectangle fill="WHITE" height="773.0" layoutX="826.0" layoutY="154.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
-      <Button fx:id="addUser" layoutX="1092.0" layoutY="851.0" mnemonicParsing="false" onAction="#addUserBtn" prefHeight="48.0" prefWidth="150.0" styleClass="redBg" text="Afegir Professional" />
+      <Button layoutX="1092.0" layoutY="851.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="48.0" prefWidth="150.0" styleClass="redBg" text="Actualitzar dades" />
       <TextField fx:id="userName" layoutX="868.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el nom" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1069.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
          <image>

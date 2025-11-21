@@ -16,13 +16,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 public class User_Management_Controller {
@@ -65,7 +69,7 @@ public class User_Management_Controller {
     
     @FXML
     void addUser(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "add_user");
+        AppUtils.changeWindow(event, "user_add");
     }
 
     @FXML
@@ -82,12 +86,7 @@ public class User_Management_Controller {
     void editTimetable(ActionEvent event) throws IOException {
         AppUtils.changeWindow(event, "editTimetable");
     }
-
-    @FXML
-    void editUser(ActionEvent event) {
-
-    }
-
+    
     @FXML
     void manageAppointments(ActionEvent event) {
 
@@ -113,11 +112,17 @@ public class User_Management_Controller {
         VBox container = new VBox(15); 
         container.setPadding(new Insets(20)); //donar padding a cada tarjeta
 
-        List<User> users = getUsersFromDatabase(); //importa els usuaris de la base de dades
+        List<User> users = getUsersFromDatabase();//Agafar els usuaris de la base de dades
 
         for (User user : users) {
-            //if (user.getStatus().equalsIgnoreCase("ACTIVE"))
-            container.getChildren().add(new UserCard(user)); //afegeix al contenidor d'usuaris una tarjeta nova amb les dades de cada usuari
+            UserCard card = new UserCard(user); 
+            Button editBtn = (Button) card.lookup("#editBtn");
+            if (editBtn != null) {
+                editBtn.setOnAction(e -> openUserEditView(user, e));  
+            }
+            
+            container.getChildren().add(card); //afegeix al contenidor d'usuaris una tarjeta nova amb les dades de cada usuari
+            
         }
 
         usersScroll.setContent(container);
@@ -155,8 +160,27 @@ public class User_Management_Controller {
         }
         return users;
     }
+    private void openUserEditView(User user, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("edit_user.fxml"));
+            Parent root = loader.load();
+
+            // Obtenim el control·lador de la pagina que volem
+            Edit_UserController ctrl = loader.getController();
+
+            // Pasar les dades de l'usuari
+            ctrl.initData(user);
+
+            // Cambiar scene
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Usuario");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
-    /*
-        
-    */
+
 }
