@@ -50,10 +50,10 @@ public class LoginController {
             }
 
             if (loginCorrecte) {
-                System.out.println("✅ Benvingut al gym!");
+                System.out.println("Benvingut al gym!");
                 App.setRoot("main_panell");
             } else {
-                System.out.println("❌ Usuari o contrasenya incorrectes.");
+                System.out.println("Usuari o contrasenya incorrectes.");
             }
 
             conn.close();

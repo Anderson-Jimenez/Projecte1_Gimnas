@@ -197,7 +197,7 @@ public class Professional_assignController {
             AppUtils.changeWindow(event, "edit_instructor");
         } 
         else {
-            AppUtils.showError("Selecciona l'instructor que vols editar");
+            AppUtils.showAlert("Advertencia","Selecciona l'instructor que vols editar",Alert.AlertType.INFORMATION);
         }
     }
 

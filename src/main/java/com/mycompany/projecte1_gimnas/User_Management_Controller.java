@@ -117,6 +117,10 @@ public class User_Management_Controller {
         for (User user : users) {
             UserCard card = new UserCard(user); 
             Button editBtn = (Button) card.lookup("#editBtn");
+            
+            if (editBtn != null) {
+                editBtn.setOnAction(e -> openUserEditView(user, e));  
+            }
             if (editBtn != null) {
                 editBtn.setOnAction(e -> openUserEditView(user, e));  
             }
@@ -149,7 +153,6 @@ public class User_Management_Controller {
                 String address = rs.getString("address");
                 String status = rs.getString("status");
 
-                // Crear objeto User EXACTO según tu tabla
                 User user = new User(id,surnames,name,dni,password,mail,phone,iban,address,status);
 
                 users.add(user);

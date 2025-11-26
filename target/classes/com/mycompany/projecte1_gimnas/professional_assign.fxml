@@ -3,9 +3,8 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
@@ -67,29 +66,12 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <TableView fx:id="instructor_table" layoutX="398.0" layoutY="180.0" prefHeight="612.0" prefWidth="1511.0">
-         <columns>
-            <TableColumn fx:id="instructor_name" editable="false" prefWidth="192.0" text="Nom Instructor" />
-            <TableColumn fx:id="instructor_surnames" editable="false" prefWidth="206.0" text="Cognoms" />
-            <TableColumn fx:id="instructor_dni" editable="false" prefWidth="183.0" text="DNI" />
-            <TableColumn fx:id="instructor_password" editable="false" prefWidth="164.0" text="password" />
-            <TableColumn fx:id="instructor_email" editable="false" prefWidth="192.0" text="email" />
-            <TableColumn fx:id="instructor_number" editable="false" prefWidth="159.0" text="numero" />
-            <TableColumn fx:id="instructor_address" editable="false" minWidth="5.0" prefWidth="239.0" text="adreça" />
-            <TableColumn fx:id="instructor_status" editable="false" prefWidth="175.0" text="Estat" />
-         </columns>
-      </TableView>
       <ComboBox fx:id="class_name" layoutX="428.0" layoutY="44.0" onAction="#show_instructors" prefHeight="39.0" prefWidth="221.0" />
-      <Button fx:id="edit_instructor_btn" layoutX="1366.0" layoutY="44.0" mnemonicParsing="false" onAction="#edit_instructor" prefHeight="39.0" prefWidth="221.0" styleClass="redBg" text="Editar">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="update_instructor_btn" layoutX="1128.0" layoutY="44.0" mnemonicParsing="false" onAction="#update_instructor" prefHeight="39.0" prefWidth="221.0" styleClass="redBg" text="Activar/Desactivar">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
+      <ScrollPane layoutX="428.0" layoutY="143.0" prefHeight="828.0" prefWidth="1400.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
    </children>
    <stylesheets>
       <URL value="@style.css" />

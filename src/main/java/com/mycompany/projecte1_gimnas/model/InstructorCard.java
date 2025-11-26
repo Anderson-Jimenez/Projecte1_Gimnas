@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.projecte1_gimnas.model;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -13,17 +12,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import com.mycompany.projecte1_gimnas.model.User;
-import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 
+public class InstructorCard extends HBox {
 
-public class UserCard extends HBox {
+    private final Instructor instructor;
 
-    private final User user;
-
-    public UserCard(User user) {
-        this.user = user;
+    public InstructorCard(Instructor instructor) {
+        this.instructor = instructor;
         buildUI();
     }
 
@@ -31,7 +26,7 @@ public class UserCard extends HBox {
         setSpacing(15);
         setPadding(new Insets(15));
         setAlignment(Pos.CENTER_LEFT);
-        setStyle("" +
+        setStyle(
                 "-fx-background-color: white;" +
                 "-fx-background-radius: 12;" +
                 "-fx-border-radius: 12;" +
@@ -41,29 +36,31 @@ public class UserCard extends HBox {
 
         // Avatar
         ImageView avatar = new ImageView(new Image(
-                getClass().getResource("/com/mycompany/projecte1_gimnas/img/user_icon.png").toExternalForm()
+                getClass().getResource("/com/mycompany/projecte1_gimnas/img/instructor_icon.png").toExternalForm()
         ));
         avatar.setFitWidth(60);
         avatar.setFitHeight(60);
         avatar.setPreserveRatio(true);
 
         // Nombre + apellidos
-        Text fullName = new Text(user.getName() + " " + user.getSurnames());
+        Text fullName = new Text(instructor.getName() + " " + instructor.getSurnames());
         fullName.setFont(Font.font("System", FontWeight.BOLD, 18));
 
         // Status
-        Label statusLabel = new Label(user.getStatus()); //Agafa el valor del status actual de l'usuari per generar el seu label depenent del status
+        Label statusLabel = new Label(instructor.getStatus());
         statusLabel.setFont(Font.font(14));
         statusLabel.setPadding(new Insets(4, 10, 4, 10));
         statusLabel.setStyle("-fx-background-radius: 8; -fx-text-fill: white;");
 
-        if (user.getStatus().equalsIgnoreCase("active")){
-            statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #4CAF50;"); //si el status es actiu, posa un color de fons, si es inactiu, posa un altre
-        }
-        else{
+        if (instructor.getStatus().equalsIgnoreCase("active")) {
+            statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #4CAF50;");
+        } else {
             statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #b71c1c;");
         }
-        VBox vbox = new VBox(5, fullName,statusLabel);
+
+        VBox vbox = new VBox(5, fullName, statusLabel);
+
+        // Botón modificar
         Button editBtn = new Button("Modificar");
         editBtn.setStyle(
                 "-fx-background-color: #4A90E2;" +
@@ -71,35 +68,50 @@ public class UserCard extends HBox {
                 "-fx-background-radius: 8;" +
                 "-fx-padding: 6 12;"
         );
-        editBtn.setId("editBtn");
-        getChildren().addAll(avatar, vbox,editBtn);
-        // Efecte hover al passar el mouse per cada tarjeta
+        editBtn.setId("editInstructorBtn");
+
+        getChildren().addAll(avatar, vbox, editBtn);
+
+        // Hover effect
         setOnMouseEntered(e -> setStyle(
-                "-fx-background-color: #f6f6f6; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d3d3d3;"
+                "-fx-background-color: #f6f6f6;" +
+                "-fx-background-radius: 12;" +
+                "-fx-border-radius: 12;" +
+                "-fx-border-color: #d3d3d3;"
         ));
 
         setOnMouseExited(e -> setStyle(
-                "-fx-background-color: white; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0;"
-        )); 
-        setOnMouseClicked(e -> showUserDetails());
+                "-fx-background-color: white;" +
+                "-fx-background-radius: 12;" +
+                "-fx-border-radius: 12;" +
+                "-fx-border-color: #e0e0e0;"
+        ));
+
+        // Click → popup
+        setOnMouseClicked(e -> showInstructorDetails());
     }
 
-    public User getUser() {
-        return user;
+    public Instructor getInstructor() {
+        return instructor;
     }
-    private void showUserDetails() {
-        javafx.scene.control.Dialog<Void> dialog = new javafx.scene.control.Dialog<>();
-        dialog.setTitle("Informació de l'usuari");
+
+    // =========================
+    // POP-UP DE INFORMACIÓN
+    // =========================
+    private void showInstructorDetails() {
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Informació de l'instructor");
 
         dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.CLOSE);
+
         ImageView avatar = new ImageView(new Image(
-                getClass().getResource("/com/mycompany/projecte1_gimnas/img/user_icon.png").toExternalForm()
+                getClass().getResource("/com/mycompany/projecte1_gimnas/img/instructor_icon.png").toExternalForm()
         ));
         avatar.setFitWidth(120);
         avatar.setFitHeight(120);
         avatar.setPreserveRatio(true);
 
-        Label fullName = new Label(user.getName() + " " + user.getSurnames());
+        Label fullName = new Label(instructor.getName() + " " + instructor.getSurnames());
         fullName.setFont(Font.font("System", FontWeight.BOLD, 20));
         fullName.setStyle("-fx-text-fill: white;");
 
@@ -107,12 +119,11 @@ public class UserCard extends HBox {
         fields.setPadding(new Insets(15));
 
         fields.getChildren().addAll(
-                styledField("DNI: " + user.getDni()),
-                styledField("Correu: " + user.getMail()),
-                styledField("Telèfon: " + user.getPhone()),
-                styledField("IBAN: " + user.getIban()),
-                styledField("Adreça: " + user.getAddress()),
-                styledField("Estat: " + user.getStatus())
+                styledField("DNI: " + instructor.getDni()),
+                styledField("Correu: " + instructor.getEmail()),
+                styledField("Telèfon: " + instructor.getPhone()),
+                styledField("Adreça: " + instructor.getAddress()),
+                styledField("Estat: " + instructor.getStatus())
         );
 
         VBox root = new VBox(18, avatar, fullName, fields);
@@ -120,20 +131,21 @@ public class UserCard extends HBox {
         root.setPadding(new Insets(25));
 
         root.setStyle(
-                "-fx-background-color: linear-gradient(to bottom right, #FFF, #FE5D5D);" +
+                "-fx-background-color: linear-gradient(to bottom right, #FFF, #5DA9FE);" +
                 "-fx-padding: 20;"
         );
 
         dialog.getDialogPane().setContent(root);
 
-        // Hacer el panel más ancho y bonito
         dialog.getDialogPane().setPrefWidth(380);
-        dialog.getDialogPane().setStyle(
-                "-fx-background-color: transparent;"
-        );
+        dialog.getDialogPane().setStyle("-fx-background-color: transparent;");
 
         dialog.showAndWait();
     }
+
+    // =========================
+    // CAMPO ESTILIZADO
+    // =========================
     private HBox styledField(String text) {
         Label label = new Label(text);
         label.setFont(Font.font(15));
@@ -149,6 +161,4 @@ public class UserCard extends HBox {
 
         return box;
     }
-
 }
-

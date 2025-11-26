@@ -19,10 +19,11 @@ public class AppUtils {
         stage.show();
     }
     
-    // Puedes agregar más métodos utilitarios aquí
-    public static void showError(String mensaje) {
-        Alert alerta = new Alert(Alert.AlertType.ERROR);
-        alerta.setContentText(mensaje);
-        alerta.show();
+    public static void showAlert(String title, String message, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

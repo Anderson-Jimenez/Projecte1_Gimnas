@@ -11,9 +11,9 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#00000080" height="1080.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1920.0" />
       <Rectangle fill="#ffffff7f" height="1089.0" layoutX="1255.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="560.0" />
-      <PasswordField fx:id="password_input" layoutX="1294.0" layoutY="680.0" prefHeight="26.0" prefWidth="482.0" promptText="Introdueix la teva Contrasenya" styleClass="input" />
       <TextField fx:id="username_input" layoutX="1294.0" layoutY="603.0" prefHeight="26.0" prefWidth="482.0" promptText="Introdueix el nom d'usuari" styleClass="input" />
-      <Button layoutX="1294.0" layoutY="754.0" mnemonicParsing="false" onAction="#connection_button" prefHeight="26.0" prefWidth="482.0" styleClass="btn" text="Entrar" textFill="WHITE" />
+      <PasswordField fx:id="password_input" layoutX="1294.0" layoutY="680.0" prefHeight="26.0" prefWidth="482.0" promptText="Introdueix la teva Contrasenya" styleClass="input" />
+      <Button defaultButton="true" layoutX="1294.0" layoutY="754.0" mnemonicParsing="false" onAction="#connection_button" prefHeight="26.0" prefWidth="482.0" styleClass="btn" text="Entrar" textFill="WHITE" />
       <Label graphicTextGap="7.0" layoutX="1294.0" layoutY="572.0" styleClass="labelColor" text="Usuari" />
       <Label layoutX="1294.0" layoutY="655.0" styleClass="labelColor" text="Contrasenya" />
    </children>
