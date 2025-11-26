@@ -176,7 +176,7 @@ public class Edit_timetable_Controller {
         Clase clase = class_table.getSelectionModel().getSelectedItem();
 
         if (clase != null) {
-            System.out.println("📝 Editar classe: " + clase.getClass_name());
+            System.out.println("Editar classe: " + clase.getClass_name());
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("checkInfo.fxml"));
             Parent root = loader.load();
@@ -189,7 +189,7 @@ public class Edit_timetable_Controller {
             //Canviar l'escena
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Editar Instructor");
+            stage.setTitle("Informacio Clase");
             stage.show();
             
 

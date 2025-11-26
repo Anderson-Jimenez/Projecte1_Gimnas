@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
@@ -31,19 +34,23 @@ public class classInfoController {
     private int classID;
     private Clase classe;
     
-    public void initData(Clase classe) {
-        this.classe=classe;
-        classID=classe.getId();
+    public void initData(Clase clase){
+        this.classe=clase;
+        classID=clase.getId();
         
         className.setText(classe.getClass_name());
         day.setText(classe.getDate());
         startTime.setText(classe.getStart_time());
         endTime.setText(classe.getEnd_time());
         
-    }
-    
-    public void initialize() throws ClassNotFoundException, SQLException {
-        loadUserCards();
+        System.out.println("S'inicia la data");
+        
+        try{
+            loadUserCards();
+        }
+        catch(ClassNotFoundException | SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -157,7 +164,7 @@ public class classInfoController {
         VBox container = new VBox(15);
         container.setPadding(new Insets(20));
 
-        List<User> users = getUsersFromDatabase();
+        ObservableList<User> users = getUsersFromDatabase();
 
         for (User user : users) {
             container.getChildren().add(new UserCard(user));
@@ -165,17 +172,18 @@ public class classInfoController {
 
         scrollPane.setContent(container);
     }
-    public List<User> getUsersFromDatabase() throws ClassNotFoundException, SQLException {
+    public ObservableList<User> getUsersFromDatabase() throws ClassNotFoundException, SQLException {
         
-        List<User> users = new ArrayList<>();
+        ObservableList<User> users = FXCollections.observableArrayList();
         String sql = "SELECT * FROM users INNER JOIN reservation ON reservation.fk_id_user = users.id WHERE reservation.fk_id_class = ?";
 
         try (Connection conn = DatabaseConnection.getConnection()){
             PreparedStatement stmt=conn.prepareStatement(sql);
-            
+
             stmt.setInt(1,classID);
-                
-            ResultSet rs = stmt.executeQuery(sql);
+            System.out.println("La id de la clase: "+classID);
+
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
 
@@ -194,8 +202,10 @@ public class classInfoController {
                 User user = new User(id,surnames,name,dni,password,mail,phone,iban,address,status);
 
                 users.add(user);
+                
             }
-        
+            
+            System.out.println("Aqui haurien de sortir els usuaris: "+users);
 
         } catch (SQLException e) {
             e.printStackTrace();
