@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.User_AddController">
+   <children>
+      <Rectangle fill="#ff7676" height="773.0" layoutX="837.0" layoutY="162.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
+      <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
+         <children>
+            <Circle layoutX="58.0" layoutY="52.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Text fx:id="username" fill="#797979" layoutX="93.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anderson Stiven Jimenez">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="role" fill="#d7d7d7" layoutX="93.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Separator layoutX="48.0" layoutY="101.0" prefHeight="1.0" prefWidth="276.0" />
+            <Button fx:id="editTimeBtn" layoutX="47.0" layoutY="121.0" mnemonicParsing="false" onAction="#editTimetable" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="assignInstructorsBtn" layoutX="45.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Assignar Instructors">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" styleClass="redBg" text="Gestionar Clients">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="990.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Rectangle fill="WHITE" height="773.0" layoutX="826.0" layoutY="154.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
+      <Button fx:id="addUser" layoutX="1092.0" layoutY="851.0" mnemonicParsing="false" onAction="#addUserBtn" prefHeight="48.0" prefWidth="150.0" styleClass="redBg" text="Afegir Professional" />
+      <TextField fx:id="userName" layoutX="868.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el nom" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1069.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/user_icon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="876.0" layoutY="397.0" prefHeight="25.0" prefWidth="247.0" text="Nom" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userSurnames" layoutX="1158.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix els cognoms" />
+      <Label layoutX="1160.0" layoutY="397.0" prefHeight="25.0" prefWidth="247.0" text="Cognoms" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userDNI" layoutX="868.0" layoutY="509.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el numero DNI" />
+      <Label layoutX="872.0" layoutY="479.0" prefHeight="25.0" prefWidth="247.0" text="DNI" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="1160.0" layoutY="479.0" prefHeight="25.0" prefWidth="247.0" text="Password" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userEmail" layoutX="867.0" layoutY="662.0" prefHeight="36.0" prefWidth="551.0" promptText="Introdueix el teu correu" />
+      <Label layoutX="868.0" layoutY="630.0" prefHeight="25.0" prefWidth="156.0" text="Correu Electrònic" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userPhone" layoutX="864.0" layoutY="740.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el numero de telefon" />
+      <Label layoutX="867.0" layoutY="709.0" text="Telèfon de contacte" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userIBAN" layoutX="867.0" layoutY="584.0" prefHeight="36.0" prefWidth="551.0" promptText="Introdueix l'IBAN" />
+      <Label layoutX="869.0" layoutY="553.0" prefHeight="25.0" prefWidth="156.0" text="IBAN" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="userPassword" layoutX="1158.0" layoutY="510.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la contrasenya" />
+      <TextField fx:id="userAddress" layoutX="1160.0" layoutY="740.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la teva adreça" />
+      <Label layoutX="1162.0" layoutY="707.0" text="Adreça" textFill="#fe5d5d">
+         <font>
+            <Font name="Noto Sans Regular" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

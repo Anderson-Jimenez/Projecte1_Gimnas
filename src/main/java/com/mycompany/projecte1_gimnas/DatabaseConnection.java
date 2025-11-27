@@ -12,7 +12,6 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
     
-    
     private static final String URL = "jdbc:mysql://localhost:3306/gym";
     private static final String USER = "phpmyadmin";
     private static final String PASSWORD = "LaP1n3d4Badalona@"; 
@@ -24,7 +23,6 @@ public class DatabaseConnection {
     private static final String PASSWORD = ""; 
     public static Connection databaseLink; 
     */
-
 
     public static Connection getConnection() throws ClassNotFoundException {
         

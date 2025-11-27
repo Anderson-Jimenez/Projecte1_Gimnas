@@ -24,5 +24,7 @@
 }
 
 .hidden{
-    visibility: hidden;
+    -fx-opacity: 0;
+    -fx-managed: false;
+    -fx-visible: false;
 }

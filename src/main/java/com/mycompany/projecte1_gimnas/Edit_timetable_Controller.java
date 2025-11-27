@@ -35,7 +35,7 @@ public class Edit_timetable_Controller {
         Connection conn = DatabaseConnection.getConnection();
         
         if (conn == null) {
-            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+            System.out.println("No s'ha pogut connectar amb la base de dades.");
         }
 
         class_name.setCellValueFactory(new PropertyValueFactory<>("class_name"));

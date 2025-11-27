@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import com.mycompany.projecte1_gimnas.model.AppUtils;
+
 
 public class Main_panell_Controller {
 
@@ -42,7 +44,7 @@ public class Main_panell_Controller {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        fxmlLoader(event, "professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
@@ -52,7 +54,7 @@ public class Main_panell_Controller {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        fxmlLoader(event, "editTimetable");
+        AppUtils.changeWindow(event, "editTimetable");
     }
 
     @FXML
@@ -62,19 +64,13 @@ public class Main_panell_Controller {
 
     @FXML
     void manageClients(ActionEvent event) throws IOException {
-        App.setRoot("user_management");
+        AppUtils.changeWindow(event,"user_management");
     }
 
     @FXML
     void showStats(ActionEvent event) throws IOException {
-        fxmlLoader(event, "estadistiques");
+        AppUtils.changeWindow(event, "estadistiques");
     }
     
-    public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+
 }

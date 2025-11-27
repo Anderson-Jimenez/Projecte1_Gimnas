@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.Select_Class_InstructorController">
+   <children>
+      <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
+         <children>
+            <Circle layoutX="58.0" layoutY="52.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Text fx:id="username" fill="#797979" layoutX="93.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anderson Stiven Jimenez">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="rol" fill="#d7d7d7" layoutX="93.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Separator layoutX="48.0" layoutY="101.0" prefHeight="1.0" prefWidth="276.0" />
+            <Button fx:id="editTimeBtn" layoutX="48.0" layoutY="142.0" mnemonicParsing="false" onAction="#editTimetable" prefHeight="69.0" prefWidth="276.0" text="Editar Horaris">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" text="Gestionar Clients">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="990.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="assignInstructorsBtn" layoutX="21.0" layoutY="236.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="330.0" styleClass="redBg" text="Administrar Instructors">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Rectangle arcHeight="5.0" fill="#ffffff80" height="1080.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
+      <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
+      <Button fx:id="add_instructor_btn" layoutX="1540.0" layoutY="14.0" mnemonicParsing="false" onAction="#add_instructor" prefHeight="69.0" prefWidth="288.0" styleClass="redBg" text="Afegir Instructor">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <StackPane fx:id="spinning_box" layoutX="480.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_spinning_instructor" opacity="0.81" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@img/Spinning.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Spinning" prefHeight="42.0" prefWidth="148.0" text="Spinning" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="ioga_box" layoutX="827.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_yoga_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/yoga.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Ioga" prefHeight="42.0" prefWidth="76.0" text="Ioga" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="body_pump_box" layoutX="1177.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_pump_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/body_pump.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="BodyPump" prefHeight="42.0" prefWidth="164.0" text="BodyPump" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Noto Sans Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="crossfit_box" layoutX="1536.0" layoutY="173.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_crossfit_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/crossfit.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Crossfit" contentDisplay="CENTER" prefHeight="42.0" prefWidth="124.0" text="Crossfit" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="zumba_box" layoutX="480.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_zumba_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/zumba.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Zumba" prefHeight="42.0" prefWidth="110.0" text="Zumba" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="pilates_box" layoutX="827.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_pilates_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/pilates.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Pilates" prefHeight="42.0" prefWidth="110.0" text="Pilates" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane fx:id="boxing_box" layoutX="1177.0" layoutY="441.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_boxing_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/boxing.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Boxing" prefHeight="42.0" prefWidth="110.0" text="Boxing" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+
+      </StackPane>
+      <StackPane fx:id="hitt_box" layoutX="1536.0" layoutY="441.0" prefHeight="199.0" prefWidth="247.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_hitt_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/hiit.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="HITT" prefHeight="42.0" prefWidth="74.0" text="HITT" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+
+      </StackPane>
+      <StackPane fx:id="step_box" layoutX="480.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_step_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/step.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Step" prefHeight="42.0" prefWidth="71.0" text="Step" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+
+      </StackPane>
+      <StackPane fx:id="body_combat_box" layoutX="827.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_body_combat_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/body_combat.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="BodyCombat" prefHeight="42.0" prefWidth="195.0" text="BodyCombat" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+
+      </StackPane>
+      <StackPane fx:id="stretching_box" layoutX="1177.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_stretching_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/stretching.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Stretching" prefHeight="42.0" prefWidth="164.0" text="Stretching" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </StackPane>
+      <StackPane fx:id="cardio_box" layoutX="1536.0" layoutY="702.0" prefHeight="199.0" prefWidth="277.0" styleClass="classes">
+         <children>
+            <ImageView fitHeight="199.0" fitWidth="277.0" onMouseClicked="#show_cardio_instructor" opacity="0.81" pickOnBounds="true">
+               <image>
+                  <Image url="@img/cardio.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Cardio" prefHeight="42.0" prefWidth="106.0" text="Cardio " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </StackPane>
+      <ScrollPane fx:id="instructorScroll" layoutX="512.0" layoutY="184.0" prefHeight="712.0" prefWidth="1232.0" styleClass="hidden">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </children>
+   <stylesheets>
+      <URL value="@style.css" />
+      <URL value="@styleArtur.css" />
+   </stylesheets>
+</AnchorPane>

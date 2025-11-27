@@ -2,6 +2,9 @@ package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.User;
 import com.mycompany.projecte1_gimnas.model.UserCard;
+import com.mycompany.projecte1_gimnas.model.AppUtils;
+import java.io.IOException;
+
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,13 +16,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 public class User_Management_Controller {
@@ -61,13 +68,13 @@ public class User_Management_Controller {
     private Text username;
     
     @FXML
-    void addUser(ActionEvent event) {
-        
+    void addUser(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "user_add");
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) {
-
+    void assignInstructors(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"class_select");
     }
 
     @FXML
@@ -76,28 +83,23 @@ public class User_Management_Controller {
     }
 
     @FXML
-    void editTimetable(ActionEvent event) {
-
+    void editTimetable(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "editTimetable");
     }
-
-    @FXML
-    void editUser(ActionEvent event) {
-
-    }
-
+    
     @FXML
     void manageAppointments(ActionEvent event) {
 
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_management");
     }
 
     @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "estadistiques");
     }
 
        
@@ -106,18 +108,28 @@ public class User_Management_Controller {
     }
     
     public void loadUserCards() throws ClassNotFoundException {
-        
-        VBox container = new VBox(15);
-        container.setPadding(new Insets(20));
+    
+        VBox container = new VBox(15); 
+        container.setPadding(new Insets(20)); 
+        container.setFillWidth(true); // Permite que las tarjetas ocupen todo el ancho
 
         List<User> users = getUsersFromDatabase();
 
         for (User user : users) {
-            container.getChildren().add(new UserCard(user));
+            UserCard card = new UserCard(user); 
+
+            Button editBtn = (Button) card.lookup("#editBtn");
+            if (editBtn != null) {
+                editBtn.setOnAction(e -> openUserEditView(user, e));
+            }
+
+            container.getChildren().add(card);
         }
 
         usersScroll.setContent(container);
+        usersScroll.setFitToWidth(true); // Ajusta el contenido al ancho del ScrollPane
     }
+
     public List<User> getUsersFromDatabase() throws ClassNotFoundException {
         
         List<User> users = new ArrayList<>();
@@ -140,7 +152,6 @@ public class User_Management_Controller {
                 String address = rs.getString("address");
                 String status = rs.getString("status");
 
-                // Crear objeto User EXACTO según tu tabla
                 User user = new User(id,surnames,name,dni,password,mail,phone,iban,address,status);
 
                 users.add(user);
@@ -151,8 +162,27 @@ public class User_Management_Controller {
         }
         return users;
     }
+    private void openUserEditView(User user, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("edit_user.fxml"));
+            Parent root = loader.load();
+
+            // Obtenim el control·lador de la pagina que volem
+            Edit_UserController ctrl = loader.getController();
+
+            // Pasar les dades de l'usuari
+            ctrl.initData(user);
+
+            // Cambiar scene
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Usuario");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
-    /*
-        
-    */
+
 }

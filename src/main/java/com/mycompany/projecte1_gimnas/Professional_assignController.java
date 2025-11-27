@@ -1,6 +1,8 @@
 package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.Instructor;
+import com.mycompany.projecte1_gimnas.model.AppUtils;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -192,18 +194,10 @@ public class Professional_assignController {
             ctrl.initData(ins);
             
             //Canviar l'escena
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Editar Instructor");
-            stage.show();
-            
-            
-            
-            
-        } else {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setContentText("Selecciona l'instructor que vols editar");
-            alerta.show();
+            AppUtils.changeWindow(event, "edit_instructor");
+        } 
+        else {
+            AppUtils.showAlert("Advertencia","Selecciona l'instructor que vols editar",Alert.AlertType.INFORMATION);
         }
     }
 
@@ -213,7 +207,6 @@ public class Professional_assignController {
 
         if (selected_class == null) {
             System.out.println("Debes seleccionar una clase.");
-            return;
         }
 
         System.out.println("Mostrando instructores de la clase: " + selected_class);
