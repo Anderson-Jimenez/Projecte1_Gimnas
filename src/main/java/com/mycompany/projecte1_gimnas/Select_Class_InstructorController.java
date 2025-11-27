@@ -134,8 +134,8 @@ public class Select_Class_InstructorController {
     private String selected_class;
     
     @FXML
-    void add_instructor(ActionEvent event) {
-
+    void add_instructor(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "add_instructor");
     }
 
     @FXML

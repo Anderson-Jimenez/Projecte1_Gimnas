@@ -1,6 +1,8 @@
 package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.Clase;
+import com.mycompany.projecte1_gimnas.model.AppUtils;
+
 import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
 import java.sql.Connection;
@@ -245,7 +247,7 @@ public class Edit_timetable_Controller {
       
     @FXML
     void addClass(ActionEvent event) throws IOException {
-        fxmlLoader(event, "editTimetable-addClass");
+        AppUtils.changeWindow(event, "editTimetable-addClass");
     }
 
     @FXML
@@ -366,7 +368,7 @@ public class Edit_timetable_Controller {
     
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        fxmlLoader(event, "professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
@@ -376,7 +378,7 @@ public class Edit_timetable_Controller {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        fxmlLoader(event, "main_panell");
+        AppUtils.changeWindow(event, "main_panell");
 
     }
     
@@ -388,13 +390,13 @@ public class Edit_timetable_Controller {
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "user_management");
     }
 
     @FXML
     void showStats(ActionEvent event) throws IOException {
-        fxmlLoader(event, "estadistiques");
+        AppUtils.changeWindow(event, "estadistiques");
     }
     
     /*======================================Funcions====================================*/
@@ -460,15 +462,5 @@ public class Edit_timetable_Controller {
             e.printStackTrace();
         }
 
-    }
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
     }
 }

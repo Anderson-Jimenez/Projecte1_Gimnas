@@ -1,6 +1,8 @@
 package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.AppUtils;
+import com.mycompany.projecte1_gimnas.model.Clase;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

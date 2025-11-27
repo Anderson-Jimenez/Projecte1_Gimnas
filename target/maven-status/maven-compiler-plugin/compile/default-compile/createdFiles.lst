@@ -6,13 +6,17 @@ com/mycompany/projecte1_gimnas/model/User.class
 com/mycompany/projecte1_gimnas/LoginController.class
 com/mycompany/projecte1_gimnas/classInfoController.class
 com/mycompany/projecte1_gimnas/DatabaseConnection.class
+com/mycompany/projecte1_gimnas/model/AppUtils.class
+com/mycompany/projecte1_gimnas/User_AddController.class
 com/mycompany/projecte1_gimnas/EditClassController.class
 com/mycompany/projecte1_gimnas/Edit_timetable_add_class_Controller.class
 com/mycompany/projecte1_gimnas/User_Management_Controller.class
 ProbaController.class
+com/mycompany/projecte1_gimnas/Select_Class_InstructorController.class
 com/mycompany/projecte1_gimnas/model/Clase.class
 com/mycompany/projecte1_gimnas/App.class
 com/mycompany/projecte1_gimnas/model/UserCardReservas.class
+com/mycompany/projecte1_gimnas/model/InstructorCard.class
 com/mycompany/projecte1_gimnas/Edit_InstructorController.class
 com/mycompany/projecte1_gimnas/model/Instructor.class
 com/mycompany/projecte1_gimnas/StatsController.class
