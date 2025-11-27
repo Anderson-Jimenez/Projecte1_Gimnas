@@ -207,7 +207,6 @@ public class Professional_assignController {
 
         if (selected_class == null) {
             System.out.println("Debes seleccionar una clase.");
-            return;
         }
 
         System.out.println("Mostrando instructores de la clase: " + selected_class);

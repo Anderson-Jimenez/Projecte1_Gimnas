@@ -74,7 +74,7 @@ public class User_Management_Controller {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event,"professional_assign");
+        AppUtils.changeWindow(event,"class_select");
     }
 
     @FXML
@@ -108,29 +108,28 @@ public class User_Management_Controller {
     }
     
     public void loadUserCards() throws ClassNotFoundException {
-        
+    
         VBox container = new VBox(15); 
-        container.setPadding(new Insets(20)); //donar padding a cada tarjeta
+        container.setPadding(new Insets(20)); 
+        container.setFillWidth(true); // Permite que las tarjetas ocupen todo el ancho
 
-        List<User> users = getUsersFromDatabase();//Agafar els usuaris de la base de dades
+        List<User> users = getUsersFromDatabase();
 
         for (User user : users) {
             UserCard card = new UserCard(user); 
+
             Button editBtn = (Button) card.lookup("#editBtn");
-            
             if (editBtn != null) {
-                editBtn.setOnAction(e -> openUserEditView(user, e));  
+                editBtn.setOnAction(e -> openUserEditView(user, e));
             }
-            if (editBtn != null) {
-                editBtn.setOnAction(e -> openUserEditView(user, e));  
-            }
-            
-            container.getChildren().add(card); //afegeix al contenidor d'usuaris una tarjeta nova amb les dades de cada usuari
-            
+
+            container.getChildren().add(card);
         }
 
         usersScroll.setContent(container);
+        usersScroll.setFitToWidth(true); // Ajusta el contenido al ancho del ScrollPane
     }
+
     public List<User> getUsersFromDatabase() throws ClassNotFoundException {
         
         List<User> users = new ArrayList<>();

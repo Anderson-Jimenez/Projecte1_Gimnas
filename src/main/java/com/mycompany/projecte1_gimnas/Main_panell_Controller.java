@@ -44,7 +44,7 @@ public class Main_panell_Controller {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML

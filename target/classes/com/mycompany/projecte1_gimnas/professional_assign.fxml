@@ -67,11 +67,7 @@
          </font>
       </Button>
       <ComboBox fx:id="class_name" layoutX="428.0" layoutY="44.0" onAction="#show_instructors" prefHeight="39.0" prefWidth="221.0" />
-      <ScrollPane layoutX="428.0" layoutY="143.0" prefHeight="828.0" prefWidth="1400.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
-      </ScrollPane>
+      <ScrollPane layoutX="428.0" layoutY="143.0" prefHeight="828.0" prefWidth="1400.0" />
    </children>
    <stylesheets>
       <URL value="@style.css" />

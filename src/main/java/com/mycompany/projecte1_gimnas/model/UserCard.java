@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 import com.mycompany.projecte1_gimnas.model.User;
 import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 
 
 public class UserCard extends HBox {
@@ -25,6 +27,7 @@ public class UserCard extends HBox {
     public UserCard(User user) {
         this.user = user;
         buildUI();
+        setMaxWidth(Double.MAX_VALUE); 
     }
 
     private void buildUI() {
@@ -63,7 +66,12 @@ public class UserCard extends HBox {
         else{
             statusLabel.setStyle(statusLabel.getStyle() + "-fx-background-color: #b71c1c;");
         }
-        VBox vbox = new VBox(5, fullName,statusLabel);
+        VBox vbox = new VBox(5, fullName, statusLabel);
+        vbox.setAlignment(Pos.CENTER_LEFT);
+        vbox.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(vbox, Priority.ALWAYS);
+        
+        
         Button editBtn = new Button("Modificar");
         editBtn.setStyle(
                 "-fx-background-color: #4A90E2;" +
@@ -72,7 +80,11 @@ public class UserCard extends HBox {
                 "-fx-padding: 6 12;"
         );
         editBtn.setId("editBtn");
-        getChildren().addAll(avatar, vbox,editBtn);
+        
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        getChildren().addAll(avatar, vbox, spacer, editBtn);
         // Efecte hover al passar el mouse per cada tarjeta
         setOnMouseEntered(e -> setStyle(
                 "-fx-background-color: #f6f6f6; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #d3d3d3;"
