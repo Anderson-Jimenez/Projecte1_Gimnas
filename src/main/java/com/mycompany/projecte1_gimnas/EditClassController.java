@@ -2,6 +2,7 @@ package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.Clase;
 import com.mycompany.projecte1_gimnas.model.Instructor;
+import com.mycompany.projecte1_gimnas.model.AppUtils;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -128,7 +129,7 @@ public class EditClassController {
     
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        App.setRoot("professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
@@ -143,7 +144,7 @@ public class EditClassController {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        fxmlLoader(event,"editTimetable");
+        AppUtils.changeWindow(event,"editTimetable");
     }
 
     @FXML
@@ -157,23 +158,18 @@ public class EditClassController {
     }
 
     @FXML
-    void manageAppointments(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_management");
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
-    }
-
-    @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"estadistiques");
     }
 
     @FXML
     void typeClassSelect(ActionEvent event) {
-
+        
     }
 
     @FXML

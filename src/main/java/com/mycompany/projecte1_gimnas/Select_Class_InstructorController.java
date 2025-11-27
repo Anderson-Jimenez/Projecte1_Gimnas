@@ -144,8 +144,8 @@ public class Select_Class_InstructorController {
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        
     }
 
     @FXML

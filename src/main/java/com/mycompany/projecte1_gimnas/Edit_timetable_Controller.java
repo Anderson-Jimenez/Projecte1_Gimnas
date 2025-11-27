@@ -372,20 +372,13 @@ public class Edit_timetable_Controller {
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
+    void closeSession(ActionEvent event) throws IOException {
 
     }
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
         AppUtils.changeWindow(event, "main_panell");
-
-    }
-    
-    
-
-    @FXML
-    void manageAppointments(ActionEvent event) {
 
     }
 

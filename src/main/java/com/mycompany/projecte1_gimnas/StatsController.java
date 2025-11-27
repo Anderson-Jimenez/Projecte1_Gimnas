@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.AppUtils;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -126,45 +127,33 @@ public class StatsController{
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        fxmlLoader(event, "professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        
     }
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        fxmlLoader(event, "editTimetable");
+        AppUtils.changeWindow(event,"editTimetable");
     }
 
     @FXML
-    void manageAppointments(ActionEvent event) {
-
-    }
-
-    @FXML
-    void manageClients(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_management");
     }
 
     @FXML
     void showStats(ActionEvent event) throws IOException {
-        fxmlLoader(event, "main_panell");
+        AppUtils.changeWindow(event,"estadistiques");
     }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void fxmlLoader(ActionEvent event, String pagina) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(pagina+".fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
 
     public void barCharGenerate(String className, XYChart.Series s) throws ClassNotFoundException, SQLException{
         Connection conn = DatabaseConnection.getConnection();

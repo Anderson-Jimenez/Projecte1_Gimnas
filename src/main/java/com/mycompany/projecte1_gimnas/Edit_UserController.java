@@ -2,6 +2,7 @@ package com.mycompany.projecte1_gimnas;
 
 import com.mycompany.projecte1_gimnas.model.User;
 import com.mycompany.projecte1_gimnas.model.AppUtils;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javafx.event.ActionEvent;
@@ -82,33 +83,28 @@ public class Edit_UserController {
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) {
+    void assignInstructors(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "class_select");
+    }
+
+    @FXML
+    void closeSession(ActionEvent event) throws IOException {
 
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void editTimetable(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"editTimetable");
     }
 
     @FXML
-    void editTimetable(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_managment");
     }
 
     @FXML
-    void manageAppointments(ActionEvent event) {
-
-    }
-
-    @FXML
-    void manageClients(ActionEvent event) {
-
-    }
-
-    @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"estadistiques");
     }
     public void initData(User user) {
         this.user = user;
