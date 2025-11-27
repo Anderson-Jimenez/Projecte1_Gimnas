@@ -14,10 +14,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.Instructor_AddController">
    <children>
       <Rectangle fill="#ff7676" height="773.0" layoutX="837.0" layoutY="162.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
       <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
+=======
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1032.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.User_AddController">
+   <children>
+      <Rectangle fill="#ff7676" height="773.0" layoutX="837.0" layoutY="162.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
+      <Pane prefHeight="1032.0" prefWidth="372.0" style="-fx-background-color: white;">
+>>>>>>> midesVistes
          <children>
             <Circle layoutX="58.0" layoutY="52.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Text fx:id="username" fill="#797979" layoutX="93.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anderson Stiven Jimenez">
@@ -36,33 +43,50 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
+<<<<<<< HEAD
             <Button fx:id="assignInstructorsBtn" layoutX="45.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" styleClass="redBg" text="Assignar Instructors">
+=======
+            <Button fx:id="assignInstructorsBtn" layoutX="45.0" layoutY="219.0" mnemonicParsing="false" onAction="#assignInstructors" prefHeight="69.0" prefWidth="276.0" text="Assignar Instructors">
+>>>>>>> midesVistes
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
+<<<<<<< HEAD
             <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" text="Gestionar Clients">
+=======
+            <Button fx:id="manageClientsBtn" layoutX="43.0" layoutY="318.0" mnemonicParsing="false" onAction="#manageClients" prefHeight="69.0" prefWidth="276.0" styleClass="redBg" text="Gestionar Clients">
+>>>>>>> midesVistes
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
+<<<<<<< HEAD
             <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+=======
+            <Button fx:id="showStatsBtn" layoutX="43.0" layoutY="421.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
+>>>>>>> midesVistes
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
+<<<<<<< HEAD
             <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
             <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="990.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+=======
+            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="933.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+>>>>>>> midesVistes
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
          </children></Pane>
       <Rectangle fill="WHITE" height="773.0" layoutX="826.0" layoutY="154.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="631.0" />
+<<<<<<< HEAD
       <Button fx:id="addInstructor" defaultButton="true" layoutX="1087.0" layoutY="805.0" mnemonicParsing="false" onAction="#addInstructorrBtn" prefHeight="48.0" prefWidth="150.0" styleClass="redBg" text="Afegir Instructor" />
       <TextField fx:id="instructorName" layoutX="868.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el nom" />
       <TextField fx:id="instructorSurnames" layoutX="1158.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix els cognoms" />
@@ -71,6 +95,10 @@
       <TextField fx:id="instructorEmail" layoutX="866.0" layoutY="592.0" prefHeight="36.0" prefWidth="551.0" promptText="Introdueix el teu correu" />
       <TextField fx:id="instructorPhone" layoutX="869.0" layoutY="683.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el numero de telefon" />
       <TextField fx:id="instructorAddress" layoutX="1157.0" layoutY="683.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la teva adreça" />
+=======
+      <Button fx:id="addUser" layoutX="1092.0" layoutY="851.0" mnemonicParsing="false" onAction="#addUserBtn" prefHeight="48.0" prefWidth="150.0" styleClass="redBg" text="Afegir Professional" />
+      <TextField fx:id="userName" layoutX="868.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el nom" />
+>>>>>>> midesVistes
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1069.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/user_icon.png" />
@@ -81,11 +109,19 @@
             <Font name="Noto Sans Regular" size="18.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+=======
+      <TextField fx:id="userSurnames" layoutX="1158.0" layoutY="428.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix els cognoms" />
+>>>>>>> midesVistes
       <Label layoutX="1160.0" layoutY="397.0" prefHeight="25.0" prefWidth="247.0" text="Cognoms" textFill="#fe5d5d">
          <font>
             <Font name="Noto Sans Regular" size="18.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+=======
+      <TextField fx:id="userDNI" layoutX="869.0" layoutY="504.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el numero DNI" />
+>>>>>>> midesVistes
       <Label layoutX="873.0" layoutY="474.0" prefHeight="25.0" prefWidth="247.0" text="DNI" textFill="#fe5d5d">
          <font>
             <Font name="Noto Sans Regular" size="18.0" />
@@ -96,16 +132,29 @@
             <Font name="Noto Sans Regular" size="18.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+=======
+      <TextField fx:id="userEmail" layoutX="866.0" layoutY="592.0" prefHeight="36.0" prefWidth="551.0" promptText="Introdueix el teu correu" />
+>>>>>>> midesVistes
       <Label layoutX="870.0" layoutY="564.0" prefHeight="25.0" prefWidth="156.0" text="Correu Electrònic" textFill="#fe5d5d">
          <font>
             <Font name="Noto Sans Regular" size="18.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+=======
+      <TextField fx:id="userPhone" layoutX="864.0" layoutY="683.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el numero de telefon" />
+>>>>>>> midesVistes
       <Label layoutX="867.0" layoutY="652.0" text="Telèfon de contacte" textFill="#fe5d5d">
          <font>
             <Font name="Noto Sans Regular" size="18.0" />
          </font>
       </Label>
+<<<<<<< HEAD
+=======
+      <PasswordField fx:id="userPassword" layoutX="1159.0" layoutY="505.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la contrasenya" />
+      <TextField fx:id="userAddress" layoutX="1160.0" layoutY="683.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la teva adreça" />
+>>>>>>> midesVistes
       <Label layoutX="1162.0" layoutY="650.0" text="Adreça" textFill="#fe5d5d">
          <font>
             <Font name="Noto Sans Regular" size="18.0" />

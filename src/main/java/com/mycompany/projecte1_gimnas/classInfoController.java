@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.AppUtils;
 import com.mycompany.projecte1_gimnas.model.Clase;
 import com.mycompany.projecte1_gimnas.model.User;
 import com.mycompany.projecte1_gimnas.model.UserCardReservas;
@@ -127,18 +128,18 @@ public class classInfoController {
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) {
-
+    void assignInstructors(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
     void back(ActionEvent event) throws IOException {
-        
+        AppUtils.changeWindow(event,"edit_timetable");        
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-        
+    void closeSession(ActionEvent event) throws IOException {
+
     }
 
     @FXML
@@ -148,22 +149,17 @@ public class classInfoController {
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        
+        AppUtils.changeWindow(event,"edit_timetable");
     }
 
     @FXML
-    void manageAppointments(ActionEvent event) {
-
-    }
-
-    @FXML
-    void manageClients(ActionEvent event) {
-        
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_management");       
     }
 
     @FXML
     void showStats(ActionEvent event) throws IOException {
-        
+        AppUtils.changeWindow(event,"estadistiques");   
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////

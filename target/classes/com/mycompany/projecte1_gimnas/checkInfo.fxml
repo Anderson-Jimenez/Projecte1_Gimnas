@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.classInfoController">
+<AnchorPane fx:id="mainBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1032.0" prefWidth="1920.0" styleClass="background" stylesheets="@styleArtur.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecte1_gimnas.classInfoController">
    <children>
-      <Pane prefHeight="1080.0" prefWidth="372.0" style="-fx-background-color: white;">
+      <Pane prefHeight="1032.0" prefWidth="372.0" style="-fx-background-color: white;">
          <children>
             <Circle layoutX="58.0" layoutY="52.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Text fx:id="username" fill="#797979" layoutX="93.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anderson Stiven Jimenez">
@@ -41,23 +41,18 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="manageAppointmentsBtn" layoutX="41.0" layoutY="413.0" mnemonicParsing="false" onAction="#manageAppointments" prefHeight="69.0" prefWidth="276.0" text="Gestionar Reserves">
+            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="416.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="showStatsBtn" layoutX="39.0" layoutY="511.0" mnemonicParsing="false" onAction="#showStats" prefHeight="69.0" prefWidth="276.0" text="Estadistiques">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Button>
-            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="990.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
+            <Button fx:id="closeSessionBtn" layoutX="43.0" layoutY="912.0" mnemonicParsing="false" onAction="#closeSession" prefHeight="69.0" prefWidth="276.0" text="Tancar Sessió">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Button>
          </children></Pane>
-      <Rectangle arcHeight="5.0" fill="#ffffffe5" height="1080.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
+      <Rectangle arcHeight="5.0" fill="#ffffffe5" height="1032.0" layoutX="372.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="1549.0" />
       <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
       <Button fx:id="back" layoutX="428.0" layoutY="44.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="63.0" styleClass="redBg" text="&lt;=">
          <font>
@@ -69,57 +64,62 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Text fx:id="day" fill="RED" layoutX="426.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIA">
+      <Text fx:id="day" fill="RED" layoutX="606.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIA">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="startTime" fill="RED" layoutX="426.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+      <Text fx:id="startTime" fill="RED" layoutX="494.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="instructorName" fill="RED" layoutX="426.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSTRUCTOR">
+      <Text layoutX="426.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserves:">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="RED" layoutX="426.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESERVES:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ScrollPane fx:id="scrollPane" layoutX="428.0" layoutY="357.0" prefHeight="712.0" prefWidth="1436.0">
+      <ScrollPane fx:id="scrollPane" layoutX="429.0" layoutY="371.0" prefHeight="623.0" prefWidth="1436.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="706.0" prefWidth="1418.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="621.0" prefWidth="1418.0" />
         </content>
       </ScrollPane>
-      <Text fx:id="endTime" fill="RED" layoutX="528.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+      <Text fx:id="endTime" fill="RED" layoutX="577.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="RED" layoutX="504.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+      <Text fill="RED" layoutX="559.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="RED" layoutX="552.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queden">
+      <Text fill="RED" layoutX="537.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queden">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="currentCapacity" fill="RED" layoutX="651.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="currentCapacity" fill="RED" layoutX="632.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="RED" layoutX="691.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de">
+      <Text fill="RED" layoutX="665.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="capacity" fill="RED" layoutX="736.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+      <Text fx:id="capacity" fill="RED" layoutX="708.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="428.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dia de la Classe:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="428.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora:">
          <font>
             <Font size="24.0" />
          </font>

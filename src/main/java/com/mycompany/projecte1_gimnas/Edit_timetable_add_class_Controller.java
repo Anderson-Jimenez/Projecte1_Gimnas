@@ -197,7 +197,7 @@ public class Edit_timetable_add_class_Controller {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
@@ -206,8 +206,8 @@ public class Edit_timetable_add_class_Controller {
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"login");
     }
 
     @FXML
@@ -231,18 +231,13 @@ public class Edit_timetable_add_class_Controller {
     }
 
     @FXML
-    void manageAppointments(ActionEvent event) {
-
+    void manageClients(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"user_management");
     }
 
     @FXML
-    void manageClients(ActionEvent event) {
-
-    }
-
-    @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"estadistiques");
     }
 
     @FXML

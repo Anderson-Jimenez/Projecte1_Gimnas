@@ -151,7 +151,7 @@ public class Select_Class_InstructorController {
 
     @FXML
     void closeSession(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "login");
+        
     }
 
     @FXML

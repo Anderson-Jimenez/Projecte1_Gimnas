@@ -74,22 +74,17 @@ public class User_Management_Controller {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event,"class_select");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        
     }
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
         AppUtils.changeWindow(event, "editTimetable");
-    }
-    
-    @FXML
-    void manageAppointments(ActionEvent event) {
-
     }
 
     @FXML

@@ -103,41 +103,36 @@ public class Edit_InstructorController {
     }
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        App.setRoot("assignInstructors");
-
+        AppUtils.changeWindow(event,"add_instructors");
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        
     }
 
-    @FXML
-    void manageAppointments(ActionEvent event) throws IOException {
-
-    }
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
-        App.setRoot("editTimetable");
+        AppUtils.changeWindow(event,"editTimetable");
     }
     @FXML
     void manageClients(ActionEvent event) throws IOException {
-        App.setRoot("professional_assign");
+        AppUtils.changeWindow(event,"user_management");
 
     }
 
     @FXML
     void professional_administration(ActionEvent event) throws IOException {
-        App.setRoot("professional_assign");
+        AppUtils.changeWindow(event,"professional_assign");
     }
 
     @FXML
     void showStats(ActionEvent event) throws IOException {
-        App.setRoot("main_panell");
+        AppUtils.changeWindow(event,"estadistiques");
     }
     @FXML
     void show_instructors(ActionEvent event) throws IOException {
-        App.setRoot("main_panell");            
+        AppUtils.changeWindow(event,"main_panell");
     }
 
 

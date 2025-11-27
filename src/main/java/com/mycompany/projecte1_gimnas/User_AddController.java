@@ -134,31 +134,29 @@ public class User_AddController {
 
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "professional_assign");
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editTimetable(ActionEvent event) {
+    void closeSession(ActionEvent event) throws IOException {
         
+
     }
 
     @FXML
-    void manageAppointments(ActionEvent event) {
+    void editTimetable(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event,"edit_timtable");
     }
+
 
     @FXML
     void manageClients(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "user_management");
+        AppUtils.changeWindow(event,"user_managment");
     }
 
     @FXML
     void showStats(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "estadistiques");
+        AppUtils.changeWindow(event,"estadistiques");
     }
 
 }

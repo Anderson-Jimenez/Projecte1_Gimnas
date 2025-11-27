@@ -48,18 +48,13 @@ public class Main_panell_Controller {
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        
     }
 
     @FXML
     void editTimetable(ActionEvent event) throws IOException {
         AppUtils.changeWindow(event, "editTimetable");
-    }
-
-    @FXML
-    void manageAppointments(ActionEvent event) {
-        
     }
 
     @FXML

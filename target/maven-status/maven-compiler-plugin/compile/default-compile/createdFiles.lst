@@ -11,6 +11,10 @@ com\mycompany\projecte1_gimnas\model\AppUtils.class
 com\mycompany\projecte1_gimnas\Select_Class_InstructorController.class
 com\mycompany\projecte1_gimnas\User_AddController.class
 com\mycompany\projecte1_gimnas\Instructor_AddController.class
+ProbaController.class
+com\mycompany\projecte1_gimnas\model\AppUtils.class
+com\mycompany\projecte1_gimnas\Select_Class_InstructorController.class
+com\mycompany\projecte1_gimnas\User_AddController.class
 com\mycompany\projecte1_gimnas\App.class
 com\mycompany\projecte1_gimnas\model\UserCardReservas.class
 com\mycompany\projecte1_gimnas\model\Clase.class
