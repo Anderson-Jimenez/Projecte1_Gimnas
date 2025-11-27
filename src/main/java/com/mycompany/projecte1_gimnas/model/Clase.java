@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.projecte1_gimnas.model;
 
-/**
- *
- * @author asix1
- */
 public class Clase {
     private int id;
     private String class_name;
@@ -83,4 +75,3 @@ public class Clase {
         this.end_time = end_time;
     }
 }
-

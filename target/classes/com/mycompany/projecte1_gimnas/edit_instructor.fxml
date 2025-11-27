@@ -62,8 +62,7 @@
          </children></Pane>
       <Rectangle arcHeight="5.0" fill="#ffffffcb" height="671.0" layoutX="800.0" layoutY="196.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" styleClass="btnArrow" width="674.0" />
       <Separator layoutX="428.0" layoutY="100.0" prefHeight="3.0" prefWidth="1400.0" />
-      <ComboBox fx:id="class_name" layoutX="428.0" layoutY="44.0" onAction="#show_instructors" prefHeight="39.0" prefWidth="221.0" />
-      <Button fx:id="update_instructor_btn" layoutX="1045.0" layoutY="704.0" mnemonicParsing="false" onAction="#update_instructor" prefHeight="58.0" prefWidth="184.0" text="Actualitza Dades Instructor">
+      <Button fx:id="update_instructor_btn" layoutX="1045.0" layoutY="761.0" mnemonicParsing="false" onAction="#update_instructor" prefHeight="58.0" prefWidth="184.0" text="Actualitza Dades Instructor">
          <styleClass>
             <String fx:value="redBg" />
             <String fx:value="btn" />
@@ -77,14 +76,17 @@
       <TextField fx:id="phoneNumberLabel" layoutX="882.0" layoutY="473.0" prefHeight="39.0" prefWidth="511.0" />
       <Text fill="#fe5d5d" layoutX="885.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de telèfon" wrappingWidth="124.80400085449219" />
       <TextField fx:id="addressLabel" layoutX="882.0" layoutY="549.0" prefHeight="39.0" prefWidth="511.0" />
+      <ComboBox fx:id="statusCombo" layoutX="882.0" layoutY="610.0" prefHeight="39.0" prefWidth="511.0" />
+
+      <Text fill="#fe5d5d" layoutX="883.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
       <Text fill="#fe5d5d" layoutX="884.0" layoutY="545.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adreça" wrappingWidth="124.80400085449219" />
       <Text fill="#fe5d5d" layoutX="989.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualitzar Dades">
          <font>
             <Font name="Noto Sans Regular" size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="passwdLabel" layoutX="882.0" layoutY="634.0" prefHeight="39.0" prefWidth="511.0" />
-      <Text fill="#fe5d5d" layoutX="883.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
+      <TextField fx:id="passwdLabel" layoutX="882.0" layoutY="680.0" prefHeight="39.0" prefWidth="511.0" />
+      <Text fill="#fe5d5d" layoutX="883.0" layoutY="670.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
    </children>
    <stylesheets>
       <URL value="@style.css" />

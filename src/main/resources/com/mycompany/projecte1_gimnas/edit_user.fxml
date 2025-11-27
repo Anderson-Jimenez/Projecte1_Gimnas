@@ -70,7 +70,7 @@
       <PasswordField fx:id="userPassword" layoutX="1158.0" layoutY="510.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la contrasenya" />
       <TextField fx:id="userIBAN" layoutX="867.0" layoutY="584.0" prefHeight="36.0" prefWidth="551.0" promptText="Introdueix l'IBAN" />
       <TextField fx:id="userEmail" layoutX="867.0" layoutY="662.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el teu correu" />
-      <ComboBox layoutX="1156.0" layoutY="660.0" prefHeight="36.0" prefWidth="260.0" />
+      <ComboBox fx:id="userStatus" layoutX="1156.0" layoutY="660.0" prefHeight="36.0" prefWidth="260.0" />
       <TextField fx:id="userPhone" layoutX="864.0" layoutY="740.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix el numero de telefon" />
       <TextField fx:id="userAddress" layoutX="1157.0" layoutY="740.0" prefHeight="36.0" prefWidth="260.0" promptText="Introdueix la teva adreça" />
       <Button defaultButton="true" layoutX="1092.0" layoutY="851.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="48.0" prefWidth="150.0" styleClass="redBg" text="Actualitzar dades" />

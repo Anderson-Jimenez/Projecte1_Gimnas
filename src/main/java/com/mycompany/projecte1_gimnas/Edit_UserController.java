@@ -4,6 +4,8 @@ import com.mycompany.projecte1_gimnas.model.User;
 import com.mycompany.projecte1_gimnas.model.AppUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -70,6 +73,9 @@ public class Edit_UserController {
 
     @FXML
     private TextField userSurnames;
+    
+    @FXML
+    private ComboBox<String> userStatus;
 
     @FXML
     private Text username;
@@ -119,6 +125,12 @@ public class Edit_UserController {
         userPhone.setText(user.getPhone());
         userIBAN.setText(user.getIban());
         userAddress.setText(user.getAddress());
+        userStatus.setValue(user.getStatus());
+    }
+    @FXML
+    public void initialize() throws ClassNotFoundException {
+        ObservableList<String> status = FXCollections.observableArrayList("ACTIVE", "INACTIVE");
+        userStatus.setItems(status);
     }
     @FXML
     private void updateUser(ActionEvent event) {
@@ -126,7 +138,7 @@ public class Edit_UserController {
             AppUtils.showAlert("Error", "No hay usuario cargado", Alert.AlertType.ERROR);
         }
 
-        String sql = "UPDATE users SET name = ?, surnames = ?, dni = ?, mail = ?, phone = ?, IBAN = ?, address = ?, password = ? WHERE ID = ?";
+        String sql = "UPDATE users SET name = ?, surnames = ?, dni = ?, mail = ?, phone = ?, IBAN = ?, address = ?, password = ?, status = ? WHERE ID = ?";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             if (conn == null) {
@@ -147,12 +159,12 @@ public class Edit_UserController {
             } else {
                 stmt.setString(8, userPassword.getText());
             }
-
-            stmt.setInt(9, user.getId());
+            stmt.setString(9, userStatus.getValue());
+            stmt.setInt(10, user.getId());
 
             int rows = stmt.executeUpdate();
             if (rows > 0) {
-                AppUtils.showAlert("Correcte", "L'usuari s'ha actualitzat correctament", Alert.AlertType.INFORMATION);
+                AppUtils.showAlert("Correcte", "L'instructor s'ha actualitzat correctament", Alert.AlertType.INFORMATION);
                 AppUtils.changeWindow(event, "user_management");
             } else {
                 AppUtils.showAlert("Avís", "No s'han modificat les dades", Alert.AlertType.WARNING);

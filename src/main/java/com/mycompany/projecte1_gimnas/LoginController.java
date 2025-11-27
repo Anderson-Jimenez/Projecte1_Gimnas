@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.AppUtils;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -30,7 +32,7 @@ public class LoginController {
         Connection conn = DatabaseConnection.getConnection();
 
         if (conn == null) {
-            System.out.println("❌ No s'ha pogut connectar amb la base de dades.");
+            System.out.println("No s'ha pogut connectar amb la base de dades.");
         }
 
         try {
@@ -53,7 +55,7 @@ public class LoginController {
                 System.out.println("Benvingut al gym!");
                 App.setRoot("main_panell");
             } else {
-                System.out.println("Usuari o contrasenya incorrectes.");
+                AppUtils.showAlert("Error dades", "L'usuari o la contrasenya son incorrectes!", Alert.AlertType.INFORMATION);
             }
 
             conn.close();

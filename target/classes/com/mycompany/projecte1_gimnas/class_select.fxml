@@ -176,7 +176,7 @@
                   <Image url="@img/hiit.png" />
                </image>
             </ImageView>
-            <Label fx:id="HITT" prefHeight="42.0" prefWidth="74.0" text="HITT" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="HIIT" prefHeight="42.0" prefWidth="74.0" text="HIIT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>

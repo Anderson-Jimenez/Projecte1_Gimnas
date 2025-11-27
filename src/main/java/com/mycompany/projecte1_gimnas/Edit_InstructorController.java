@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.AppUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,15 +10,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 
@@ -74,6 +80,9 @@ public class Edit_InstructorController {
     @FXML
     private Text username;
     
+    @FXML
+    private ComboBox<String> statusCombo;
+    
     private Instructor instructor;
 
     public void initData(Instructor instructor) {
@@ -84,9 +93,14 @@ public class Edit_InstructorController {
         phoneNumberLabel.setText(instructor.getPhone());
         addressLabel.setText(instructor.getAddress());
         passwdLabel.setText(instructor.getPassword());
-        
-    }
+        statusCombo.setValue(instructor.getStatus());
 
+    }
+    @FXML
+    public void initialize() throws ClassNotFoundException {
+        ObservableList<String> status = FXCollections.observableArrayList("ACTIVE", "INACTIVE", "DE BAIXA");
+        statusCombo.setItems(status);
+    }
     @FXML
     void assignInstructors(ActionEvent event) throws IOException {
         App.setRoot("assignInstructors");
@@ -100,7 +114,6 @@ public class Edit_InstructorController {
 
     @FXML
     void manageAppointments(ActionEvent event) throws IOException {
-        App.setRoot("professional_assign");
 
     }
     @FXML
@@ -130,39 +143,29 @@ public class Edit_InstructorController {
 
     @FXML
     void update_instructor(ActionEvent event) throws IOException, ClassNotFoundException {
-        
-        
-        String sql = "UPDATE instructor SET email = ?, password = ?, phone = ?, address = ? WHERE id = ?";
-             
-        try (Connection conn = DatabaseConnection.getConnection()) {
-            if (conn == null) {
-                System.out.println("❌No so s'ha pogut connectar a la base de dades");
-            }
 
-            Statement statement = conn.createStatement();
+        String sql = "UPDATE instructor SET email = ?, password = ?, phone = ?, address = ?, status = ? WHERE id = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection()) {
+
             PreparedStatement stmt = conn.prepareStatement(sql);
-                    
+
             stmt.setString(1, emailLabel.getText());
             stmt.setString(2, passwdLabel.getText());
             stmt.setString(3, phoneNumberLabel.getText());
             stmt.setString(4, addressLabel.getText());
-            stmt.setInt(5, instructor.getId());
-            
+            stmt.setString(5, statusCombo.getValue());
+            stmt.setInt(6, instructor.getId());
+
             int rows = stmt.executeUpdate();
 
-            if (rows > 0) {
-                System.out.println("✅ Instructor actualitzat correctament");
-
-                //Volver a la vista principal de instructors
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("professional_assign.fxml"));
-                Parent root = loader.load();
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
-            } else {
-                System.out.println("⚠️ No se ha actualizado ningún registro (¿ID incorrecto?)");
+            if(rows > 0) {
+                AppUtils.showAlert("Actualització completada","L'instructor s'ha modificat correctament",Alert.AlertType.INFORMATION);
+                AppUtils.changeWindow(event, "class_select");
+            } 
+            else{
+                AppUtils.showAlert("Error Actualitzar dades","No s'ha modificat l'instructor",Alert.AlertType.ERROR);
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -3,6 +3,7 @@ package com.mycompany.projecte1_gimnas;
 import com.mycompany.projecte1_gimnas.model.AppUtils;
 import com.mycompany.projecte1_gimnas.model.Instructor;
 import com.mycompany.projecte1_gimnas.model.InstructorCard;
+import com.mycompany.projecte1_gimnas.model.User;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +15,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -23,6 +28,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class Select_Class_InstructorController {
     
@@ -42,7 +48,7 @@ public class Select_Class_InstructorController {
     private Label Crossfit;
 
     @FXML
-    private Label HITT;
+    private Label HIIT;
 
     @FXML
     private Label Ioga;
@@ -144,8 +150,8 @@ public class Select_Class_InstructorController {
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "login");
     }
 
     @FXML
@@ -200,7 +206,7 @@ public class Select_Class_InstructorController {
 
     @FXML
     void show_hitt_instructor(MouseEvent event) throws ClassNotFoundException {
-        selected_class = HITT.getText();
+        selected_class = HIIT.getText();
         see_intructors(selected_class);
     }
 
@@ -283,8 +289,15 @@ public class Select_Class_InstructorController {
             container.setFillWidth(true);
 
             for (Instructor instructor : instructors) {
+                
                 InstructorCard card = new InstructorCard(instructor);
                 container.getChildren().add(card);
+            
+                Button editBtn = (Button) card.lookup("#editInstructorBtn");
+                if (editBtn != null) {
+                    editBtn.setOnAction(e -> openInstructorEditView(instructor, e));
+                }
+            
             }
 
             // Asegúrate de que el ScrollPane ajuste el contenido
@@ -311,5 +324,27 @@ public class Select_Class_InstructorController {
         step_box.getStyleClass().add("hidden");
         stretching_box.getStyleClass().add("hidden");
         zumba_box.getStyleClass().add("hidden");
+    }
+    
+    private void openInstructorEditView(Instructor instructor, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("edit_instructor.fxml"));
+            Parent root = loader.load();
+
+            // Obtenim el control·lador de la pagina que volem
+            Edit_InstructorController ctrl = loader.getController();
+
+            // Pasar les dades de l'instructor
+            ctrl.initData(instructor);
+
+            // Cambiar scene
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Instructor");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,10 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class User_AddController {
+public class Instructor_AddController {
 
     @FXML
-    private Button addUser;
+    private Button addInstructor;
 
     @FXML
     private Button assignInstructorsBtn;
@@ -30,6 +28,27 @@ public class User_AddController {
 
     @FXML
     private Button editTimeBtn;
+
+    @FXML
+    private TextField instructorAddress;
+
+    @FXML
+    private TextField instructorDNI;
+
+    @FXML
+    private TextField instructorEmail;
+
+    @FXML
+    private TextField instructorName;
+
+    @FXML
+    private PasswordField instructorPassword;
+
+    @FXML
+    private TextField instructorPhone;
+
+    @FXML
+    private TextField instructorSurnames;
 
     @FXML
     private AnchorPane mainBackground;
@@ -47,43 +66,19 @@ public class User_AddController {
     private Button showStatsBtn;
 
     @FXML
-    private TextField userAddress;
+    private Text username;
 
     @FXML
-    private TextField userDNI;
-
-    @FXML
-    private TextField userEmail;
-
-    @FXML
-    private TextField userIBAN;
-
-    @FXML
-    private TextField userName;
-
-    @FXML
-    private PasswordField userPassword;
-
-    @FXML
-    private TextField userPhone;
-
-    @FXML
-    private TextField userSurnames;
-
-    @FXML
-    void addUserBtn(ActionEvent event) throws IOException, ClassNotFoundException {
+    void addInstructorrBtn(ActionEvent event) throws IOException, ClassNotFoundException {
         boolean flag=false;
-        String username =userName.getText();
-        String iban = userIBAN.getText();
-        String dni=userDNI.getText();
+        String username =instructorName.getText();
+        String dni=instructorDNI.getText();
 
         try (Connection conn1 = DatabaseConnection.getConnection()) {
 
-            String sql = "SELECT dni FROM users WHERE dni = ? OR IBAN = ?";
+            String sql = "SELECT dni FROM instructor WHERE dni = ?";
             PreparedStatement stmt = conn1.prepareStatement(sql);
             stmt.setString(1, dni);
-            stmt.setString(2, iban);
-
 
             ResultSet rs = stmt.executeQuery();
 
@@ -97,22 +92,22 @@ public class User_AddController {
 
         // Si existeix el dni, mostra una alarma
         if (flag) {
-            AppUtils.showAlert("Usuari ja registrat", "Ja existeix un usuari amb aquest DNI o IBAN",Alert.AlertType.ERROR );
+            AppUtils.showAlert("Usuari ja registrat", "Ja existeix un usuari amb aquest DNI",Alert.AlertType.ERROR );
         }
 
         // Recollir dades formulari
-        String surnames = userSurnames.getText();
-        String password = userPassword.getText();
+        String surnames = instructorSurnames.getText();
+        String password = instructorPassword.getText();
         
-        String email = userEmail.getText();
-        String phone = userPhone.getText();
-        String address = userAddress.getText();
+        String email = instructorEmail.getText();
+        String phone = instructorPhone.getText();
+        String address = instructorAddress.getText();
         String status = "ACTIVE";
 
-        // INSERT correcto a la taula users
+        // INSERT correcto en la tabla users
         try (Connection conn2 = DatabaseConnection.getConnection()) {
 
-            String sql = "INSERT INTO users (surnames, name, dni, password, mail, phone, IBAN, address, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO instructor (surnames, name, dni, password, email, phone, address, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn2.prepareStatement(sql);
             stmt.setString(1, surnames);
             stmt.setString(2, username);
@@ -120,21 +115,22 @@ public class User_AddController {
             stmt.setString(4, password);
             stmt.setString(5, email);
             stmt.setString(6, phone);
-            stmt.setString(7, iban);
-            stmt.setString(8, address);
-            stmt.setString(9, status);
+            stmt.setString(7, address);
+            stmt.setString(8, status);
 
             stmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        AppUtils.changeWindow(event, "user_management");
+        // Cambiar de ventana tras insertar
+        //AppUtils.showAlert("Usuari ja registrat", "Ja existeix un usuari amb aquest DNI",Alert.AlertType.ERROR );
+        AppUtils.changeWindow(event, "class_select");
     }
 
     @FXML
-    void assignInstructors(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "professional_assign");
+    void assignInstructors(ActionEvent event) {
+
     }
 
     @FXML
@@ -144,21 +140,22 @@ public class User_AddController {
 
     @FXML
     void editTimetable(ActionEvent event) {
-        
+
     }
 
     @FXML
     void manageAppointments(ActionEvent event) {
+
     }
 
     @FXML
-    void manageClients(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "user_management");
+    void manageClients(ActionEvent event) {
+
     }
 
     @FXML
-    void showStats(ActionEvent event) throws IOException {
-        AppUtils.changeWindow(event, "estadistiques");
+    void showStats(ActionEvent event) {
+
     }
 
 }
