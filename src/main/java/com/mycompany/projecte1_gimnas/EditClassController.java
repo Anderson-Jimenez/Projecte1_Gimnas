@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.Clase;
 import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
 import java.sql.Connection;
@@ -193,7 +194,6 @@ public class EditClassController {
                 stmt.setString(1,selected_day);
                 
                 ResultSet rs = stmt.executeQuery();
-                
                 
                 while (rs.next() && flag==false) {
                     String hour = rs.getString("start_time");

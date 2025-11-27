@@ -1,7 +1,8 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.Clase;
 import com.mycompany.projecte1_gimnas.model.User;
-import com.mycompany.projecte1_gimnas.model.UserCard;
+import com.mycompany.projecte1_gimnas.model.UserCardReservas;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,14 +35,24 @@ public class classInfoController {
     private int classID;
     private Clase classe;
     
+    private String actualCapacitText;
+    private int actualCapacit;
+    private int capacityCounter=0;
+    private int aforament;
+    private String aforamentText;
+    
+    
     public void initData(Clase clase){
         this.classe=clase;
         classID=clase.getId();
+        aforament=classe.getAforament();
+        aforamentText=String.valueOf(aforament);
         
         className.setText(classe.getClass_name());
         day.setText(classe.getDate());
         startTime.setText(classe.getStart_time());
         endTime.setText(classe.getEnd_time());
+        capacity.setText(aforamentText);
         
         System.out.println("S'inicia la data");
         
@@ -53,6 +64,12 @@ public class classInfoController {
         }
     }
 
+    @FXML
+    private Text capacity;
+
+    @FXML
+    private Text currentCapacity;
+    
     @FXML
     private Button assignInstructorsBtn;
 
@@ -106,7 +123,7 @@ public class classInfoController {
 
     @FXML
     void addClass(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -116,22 +133,22 @@ public class classInfoController {
 
     @FXML
     void back(ActionEvent event) throws IOException {
-        fxmlLoader(event,"editTimetable");
+        
     }
 
     @FXML
     void closeSession(ActionEvent event) {
-
+        
     }
 
     @FXML
     void deleteClass(ActionEvent event) {
-
+        
     }
 
     @FXML
-    void editTimetable(ActionEvent event) {
-
+    void editTimetable(ActionEvent event) throws IOException {
+        
     }
 
     @FXML
@@ -141,12 +158,12 @@ public class classInfoController {
 
     @FXML
     void manageClients(ActionEvent event) {
-
+        
     }
 
     @FXML
-    void showStats(ActionEvent event) {
-
+    void showStats(ActionEvent event) throws IOException {
+        
     }
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -167,13 +184,13 @@ public class classInfoController {
         ObservableList<User> users = getUsersFromDatabase();
 
         for (User user : users) {
-            container.getChildren().add(new UserCard(user));
+            container.getChildren().add(new UserCardReservas(user));
         }
 
         scrollPane.setContent(container);
     }
     public ObservableList<User> getUsersFromDatabase() throws ClassNotFoundException, SQLException {
-        
+        capacityCounter=0;
         ObservableList<User> users = FXCollections.observableArrayList();
         String sql = "SELECT * FROM users INNER JOIN reservation ON reservation.fk_id_user = users.id WHERE reservation.fk_id_class = ?";
 
@@ -186,7 +203,7 @@ public class classInfoController {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-
+                
                 int id = rs.getInt("ID");
                 String surnames = rs.getString("surnames");
                 String name = rs.getString("name");
@@ -198,12 +215,17 @@ public class classInfoController {
                 String address = rs.getString("address");
                 String status = rs.getString("status");
 
+                capacityCounter+=1;
                 // Crear objeto User EXACTO según tu tabla
                 User user = new User(id,surnames,name,dni,password,mail,phone,iban,address,status);
 
                 users.add(user);
                 
             }
+            
+            actualCapacit=aforament-capacityCounter;
+            actualCapacitText=String.valueOf(actualCapacit);
+            currentCapacity.setText(actualCapacitText);
             
             System.out.println("Aqui haurien de sortir els usuaris: "+users);
 
