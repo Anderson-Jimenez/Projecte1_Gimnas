@@ -1,5 +1,6 @@
 package com.mycompany.projecte1_gimnas;
 
+import com.mycompany.projecte1_gimnas.model.Clase;
 import com.mycompany.projecte1_gimnas.model.Instructor;
 import java.io.IOException;
 import java.sql.Connection;
@@ -28,9 +29,13 @@ import javafx.stage.Stage;
 public class EditClassController {
 
     private Clase classe;
+    private String savedHour;
     
     public void initData(Clase classe) {
         this.classe=classe;
+        
+        savedHour=classe.getStart_time();
+        
         // Mostrar los datos en los campos
         typeClass.setValue(classe.getClass_name());
         instructor.setValue(classe.getInstructor());
@@ -190,12 +195,18 @@ public class EditClassController {
                 
                 ResultSet rs = stmt.executeQuery();
                 
-                
                 while (rs.next() && flag==false) {
                     String hour = rs.getString("start_time");
                     if(hour.equals(selected_hour)==true){
-                        flag=true;
+                        if(hour.equals(savedHour)){
+                            flag=false;
+                        }
+                        else{
+                            flag=true;
+                        }
                     }
+            
+            
                 }
             
             conn1.close();

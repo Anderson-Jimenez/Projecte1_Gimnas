@@ -59,7 +59,7 @@
                </font>
             </Button>
          </children></Pane>
-      <Pane layoutX="399.0" layoutY="22.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
+      <Pane layoutX="431.0" layoutY="262.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
          <children>
             <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de clases cada dia+tipus de clase (stacked Bar Chart)" wrappingWidth="436.13000106811523" />
             <StackedBarChart fx:id="stackedBarChart" layoutX="11.0" layoutY="40.0" prefHeight="424.0" prefWidth="652.0">
@@ -72,20 +72,10 @@
             </StackedBarChart>
          </children>
       </Pane>
-      <Pane layoutX="1217.0" layoutY="22.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
-         <children>
-            <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantitat d'usuaris que hi han cada dia + les hores mes actives" wrappingWidth="436.13000106811523" />
-         </children>
-      </Pane>
-      <Pane layoutX="399.0" layoutY="579.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
+      <Pane layoutX="1153.0" layoutY="262.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
          <children>
             <Text layoutX="46.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% de clases de cada instructor (pie chart)" wrappingWidth="436.13000106811523" />
             <PieChart fx:id="pieChart2" layoutX="82.0" layoutY="56.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="1217.0" layoutY="579.0" prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: white;">
-         <children>
-            <Text layoutX="20.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clases mes reservades" wrappingWidth="436.13000106811523" />
          </children>
       </Pane>
    </children>
