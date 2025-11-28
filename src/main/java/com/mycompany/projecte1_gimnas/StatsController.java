@@ -132,7 +132,7 @@ public class StatsController{
 
     @FXML
     void closeSession(ActionEvent event) throws IOException {
-        
+        AppUtils.changeWindow(event, "login");
     }
 
     @FXML

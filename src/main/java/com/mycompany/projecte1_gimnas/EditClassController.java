@@ -133,8 +133,8 @@ public class EditClassController {
     }
 
     @FXML
-    void closeSession(ActionEvent event) {
-
+    void closeSession(ActionEvent event) throws IOException {
+        AppUtils.changeWindow(event, "login");
     }
 
     @FXML

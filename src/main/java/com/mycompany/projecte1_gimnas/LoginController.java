@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -28,7 +29,7 @@ public class LoginController {
     private TextField username_input;
 
     @FXML
-    private void connection_button() throws IOException, SQLException, ClassNotFoundException {
+    private void connection_button(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Connection conn = DatabaseConnection.getConnection();
 
         if (conn == null) {
@@ -53,7 +54,7 @@ public class LoginController {
 
             if (loginCorrecte) {
                 System.out.println("Benvingut al gym!");
-                App.setRoot("main_panell");
+                AppUtils.changeWindow(event, "main_panell");
             } else {
                 AppUtils.showAlert("Error dades", "L'usuari o la contrasenya son incorrectes!", Alert.AlertType.INFORMATION);
             }
