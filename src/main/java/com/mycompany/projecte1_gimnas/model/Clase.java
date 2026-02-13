@@ -1,15 +1,18 @@
 package com.mycompany.projecte1_gimnas.model;
 
+import java.time.LocalDate;
+
+
 public class Clase {
     private int id;
     private String class_name;
     private int instructor;
     private int aforament;
-    private String date;
+    private LocalDate date;
     private String start_time;
     private String end_time;
     
-    public Clase(int id,String class_name, int instructor, int aforament, String date, String start_time, String end_time) {
+    public Clase(int id,String class_name, int instructor, int aforament, LocalDate date, String start_time, String end_time) {
         this.id = id;
         this.class_name = class_name;
         this.instructor = instructor;
@@ -51,11 +54,11 @@ public class Clase {
         this.aforament = aforament;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -262,7 +262,7 @@ public class Select_Class_InstructorController {
             ObservableList<Instructor> instructors = FXCollections.observableArrayList();
 
             
-                String sql="SELECT DISTINCT i.ID, i.name, i.surnames, i.dni, i.password, i.email, i.phone, i.address, i.status FROM instructor i INNER JOIN classes c ON i.ID = c.fk_id_instructor WHERE c.name = ?";
+                String sql="SELECT DISTINCT i.ID, i.name, i.surnames, i.dni, i.password, i.email, i.phone, i.address, i.status FROM instructors i INNER JOIN classes c ON i.ID = c.instructor_id WHERE c.name = ?";
                 PreparedStatement stmt=conn.prepareStatement(sql);
                 stmt.setString(1,selected_class);
                 

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -50,7 +51,11 @@ public class classInfoController {
         aforamentText=String.valueOf(aforament);
         
         className.setText(classe.getClass_name());
-        day.setText(classe.getDate());
+        if(classe.getDate() != null){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            day.setText(classe.getDate().format(formatter));
+        }
+        
         startTime.setText(classe.getStart_time());
         endTime.setText(classe.getEnd_time());
         capacity.setText(aforamentText);

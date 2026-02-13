@@ -139,7 +139,7 @@ public class Edit_InstructorController {
     @FXML
     void update_instructor(ActionEvent event) throws IOException, ClassNotFoundException {
 
-        String sql = "UPDATE instructor SET email = ?, password = ?, phone = ?, address = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE instructors SET email = ?, password = ?, phone = ?, address = ?, status = ? WHERE id = ?";
 
         try (Connection conn = DatabaseConnection.getConnection()) {
 

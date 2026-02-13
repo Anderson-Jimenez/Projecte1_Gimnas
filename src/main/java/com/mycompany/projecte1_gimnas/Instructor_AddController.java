@@ -14,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class Instructor_AddController {
 
@@ -76,7 +77,7 @@ public class Instructor_AddController {
 
         try (Connection conn1 = DatabaseConnection.getConnection()) {
 
-            String sql = "SELECT dni FROM instructor WHERE dni = ?";
+            String sql = "SELECT dni FROM instructors WHERE dni = ?";
             PreparedStatement stmt = conn1.prepareStatement(sql);
             stmt.setString(1, dni);
 
@@ -97,7 +98,9 @@ public class Instructor_AddController {
 
         // Recollir dades formulari
         String surnames = instructorSurnames.getText();
-        String password = instructorPassword.getText();
+        String plainPassword = instructorPassword.getText();
+        
+        String hashedPassword=BCrypt.hashpw(plainPassword, BCrypt.gensalt());
         
         String email = instructorEmail.getText();
         String phone = instructorPhone.getText();
@@ -107,12 +110,12 @@ public class Instructor_AddController {
         // INSERT correcto en la tabla users
         try (Connection conn2 = DatabaseConnection.getConnection()) {
 
-            String sql = "INSERT INTO instructor (surnames, name, dni, password, email, phone, address, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO instructors (surnames, name, dni, password, email, phone, address, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn2.prepareStatement(sql);
             stmt.setString(1, surnames);
             stmt.setString(2, username);
             stmt.setString(3, dni);
-            stmt.setString(4, password);
+            stmt.setString(4, hashedPassword);
             stmt.setString(5, email);
             stmt.setString(6, phone);
             stmt.setString(7, address);

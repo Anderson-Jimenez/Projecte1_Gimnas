@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -24,21 +25,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
+import java.sql.Date;
 public class Edit_timetable_add_class_Controller {
     
     @FXML
     public void initialize() throws ClassNotFoundException {
+        /*
         ObservableList<String> days = FXCollections.observableArrayList("dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte");
         day.setItems(days);
-        
-        ObservableList<String> hours = FXCollections.observableArrayList("06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00");
+        */
+        ObservableList<String> hours = FXCollections.observableArrayList("06:00:00", "07:00:00", "08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00", "14:00:00", "15:00:00", "16:00:00", "17:00:00", "18:00:00", "19:00:00", "20:00:00", "21:00:00", "22:00:00", "23:00:00");
         hour.setItems(hours);
         
         ObservableList<String> typeClasses = FXCollections.observableArrayList("Spinning", "Ioga","BodyPump","Crossfit","Zumba","Pilates","Stretching","Cardio","BodyCombat","HIIT","Boxing","Step");
@@ -54,7 +57,7 @@ public class Edit_timetable_add_class_Controller {
 
         try {
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM instructor");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM instructors");
 
             while (rs.next()) {
                 int instructorT = rs.getInt("ID");   
@@ -79,7 +82,8 @@ public class Edit_timetable_add_class_Controller {
     private Button closeSessionBtn;
 
     @FXML
-    private ComboBox<String> day;
+    private DatePicker day;
+
 
     @FXML
     private Button editTimeBtn;
@@ -117,7 +121,7 @@ public class Edit_timetable_add_class_Controller {
     @FXML
     void addClass(ActionEvent event) throws IOException, ClassNotFoundException {
         boolean flag=false;
-        String selected_day=day.getValue();
+        LocalDate selected_day=day.getValue();
         String selected_hour=hour.getValue();
             
         Connection conn1 = DatabaseConnection.getConnection();
@@ -129,7 +133,7 @@ public class Edit_timetable_add_class_Controller {
         try {
                 String sql="SELECT * FROM classes WHERE date=?";
                 PreparedStatement stmt=conn1.prepareStatement(sql);
-                stmt.setString(1,selected_day);
+                stmt.setDate(1,java.sql.Date.valueOf(selected_day));
                 
                 ResultSet rs = stmt.executeQuery();
                 
@@ -155,7 +159,7 @@ public class Edit_timetable_add_class_Controller {
         else{
             String selected_class=typeClass.getValue();
                         
-            List<String> list= Arrays.asList("06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00","24:00");
+            List<String> list= Arrays.asList("06:00:00", "07:00:00", "08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00", "14:00:00", "15:00:00", "16:00:00", "17:00:00", "18:00:00", "19:00:00", "20:00:00", "21:00:00", "22:00:00", "23:00:00","24:00:00");
             
             int end_hour_int=list.indexOf(selected_hour);
             end_hour_int=end_hour_int+1;
@@ -174,10 +178,10 @@ public class Edit_timetable_add_class_Controller {
             }
 
             try {
-                    String sql="INSERT INTO classes (name, date, start_time, end_time, capacity, fk_id_instructor) VALUES (?, ?, ?, ?, ?, ?)";
+                    String sql="INSERT INTO classes (name, date, start_time, end_time, capacity, instructor_id) VALUES (?, ?, ?, ?, ?, ?)";
                     PreparedStatement stmt=conn2.prepareStatement(sql);
                     stmt.setString(1,selected_class);
-                    stmt.setString(2,selected_day);
+                    stmt.setDate(2,java.sql.Date.valueOf(selected_day));
                     stmt.setString(3,selected_hour);
                     stmt.setString(4,end_hour);
                     stmt.setInt(5, selectedCapacity);
